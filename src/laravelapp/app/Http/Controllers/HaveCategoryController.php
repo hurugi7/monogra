@@ -10,4 +10,29 @@ class HaveCategoryController extends Controller
     {
         return 'Hello, world!';
     }
+
+    public function create()
+    {
+        return 'Hello, world!';
+    }
+
+    public function store()
+    {
+        return 'Hello, world!';
+    }
+
+    public function edit()
+    {
+        return 'Hello, world!';
+    }
+
+    public function update()
+    {
+        return 'Hello, world!';
+    }
+
+    public function destroy()
+    {
+        return 'Hello, world!';
+    }
 }
