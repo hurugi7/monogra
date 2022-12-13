@@ -18,9 +18,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->randomNumber(2),
             'category_name' => $this->faker->word(),
-            'user_id' => User::factory(),
             'updated_at' => $this->faker->unixTime(),
             'created_at' => $this->faker->unixTime(),
         ];
