@@ -20,7 +20,6 @@ class CategoryFactory extends Factory
         return [
             'id' => $this->faker->randomNumber(2),
             'category_name' => $this->faker->word(),
-            'user_name' => $this->faker->name(),
             'user_id' => User::factory(),
             'updated_at' => $this->faker->unixTime(),
             'created_at' => $this->faker->unixTime(),
