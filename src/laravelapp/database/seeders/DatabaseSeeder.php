@@ -15,8 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::factory()->has(Category::factory()->count(10))->create();
-
-        $catagories = Category::factory()->count(8)->for($user)->create();
+       User::factory()
+            ->count(4)
+            ->has(
+                Category::factory()
+                ->count(8)
+                ->state(function (array $attributes, User $user) {
+                    return ['user_id' => $user->id];
+                })
+            )
+            ->create();
     }
 }
