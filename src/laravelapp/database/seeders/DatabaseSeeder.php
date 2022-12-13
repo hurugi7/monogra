@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Category;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+       User::factory()
+            ->count(4)
+            ->has(
+                Category::factory()
+                ->count(8)
+                ->state(function (array $attributes, User $user) {
+                    return ['user_id' => $user->id];
+                })
+            )
+            ->create();
     }
 }
