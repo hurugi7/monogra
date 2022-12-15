@@ -8,7 +8,7 @@ class HaveCategoryController extends Controller
 {
     public function index()
     {
-        return 'Hello, world!';
+        return view('have_category_index');
     }
 
     public function create()
