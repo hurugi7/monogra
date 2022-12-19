@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                note: ['-apple-system','BlinkMacSystemFont', 'Helvetica Neue', 'Segoe UI','Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Arial', 'メイリオ', 'Meiryo', 'sans-serif'],
             },
         },
     },
