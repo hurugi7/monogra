@@ -1,4 +1,4 @@
-<nav class="p-4 flex items-center flex-wrap bg-gray-300 justify-start gap-8">
+<nav class="p-3 flex items-center flex-wrap bg-gray-300 justify-start gap-8 w-full">
   <div class="items-center shrink-0 text-black mr-10">
     <span class="font-semibold text-xl">monogra</span>
   </div>

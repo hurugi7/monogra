@@ -17,7 +17,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-note text-gray-900 antialiased">
+        <div class="font-note text-gray-900 antialiased flex flex-wrap flex-start">
             {{ $slot }}
         </div>
     </body>
