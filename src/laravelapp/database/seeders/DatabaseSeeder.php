@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       User::factory()
+        User::factory()
             ->count(4)
             ->has(
                 Category::factory()
@@ -25,25 +25,21 @@ class DatabaseSeeder extends Seeder
                 ->state(function (array $attributes, User $user) {
                     return ['user_id' => $user->id];
                 })
-            )
+                ->has(
+                    SubCategory::factory()
+                    ->count(5)
+                    ->state(function (array $attributes, Category $category) {
+                        return ['category_id' => $category->id];
+                    })
+                    ->has(
+                        Item::factory()
+                        ->count(10)
+                        ->state(function (array $attributes,SubCategory $subCategory) {
+                            return ['sub_category_id' => $subCategory->id];
+                        })
+                        )
+                    )
+                )
             ->create();
-
-        SubCategory::factory()
-                        ->count(5)
-                        ->for(Category::factory()
-                        ->state(function (array $attributes, Category $category) {
-                            return ['category_id' => $category->id];
-                        }))
-                        ->create();
-
-        Item::factory()
-                ->count(10)
-                ->for(SubCategory::factory()
-                ->state(function (array $attributes, Category $category, SubCategory $subCategory) {
-                    return ['category_id' => $category->id,
-                            'sub_category_id' => $subCategory->id
-                ];
-                }))
-                ->create();
     }
 }
