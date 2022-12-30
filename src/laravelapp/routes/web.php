@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HaveCategoryController;
+use App\Http\Controllers\HaveSubCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
