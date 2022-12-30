@@ -16,10 +16,10 @@
         </x-slot>
       </x-dropdown>
     </div>
-    @foreach($user_1_categories as $user_1_category)
+    @foreach($categories as $category)
     <div class="bg-slate-100">
-      <a href="{{ route('have_sub_category.index', ['category' => $user_1_category->id]) }}" class="flex justify-between hover:bg-indigo-500 hover:text-white">
-        <div class="block text-lg py-3 px-5">{{ $user_1_category->category_name }}</div>
+      <a href="{{ route('have_sub_category.index', ['category' => $category->id]) }}" class="flex justify-between hover:bg-indigo-500 hover:text-white">
+        <div class="block text-lg py-3 px-5">{{ $category->category_name }}</div>
         <div class="text-lg py-3 px-5">12</div>
       </a>
     </div>
@@ -48,6 +48,11 @@
           <div class="text-lg py-3 px-5">12</div>
         </a>
       </div>
+        @foreach($items as $item)
+        <div>
+          <div>{{ $item->item_name }}</div>
+        </div>
+        @endforeach
       @endforeach
   </div>
 </x-guest-layout>
