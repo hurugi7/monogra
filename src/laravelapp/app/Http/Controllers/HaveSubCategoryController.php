@@ -9,7 +9,7 @@ use App\Models\Item;
 
 class HaveSubCategoryController extends Controller
 {
-    public function index(int $category, int $sub_category)
+    public function index(int $category)
     {
         $categories = Category::all();
 
@@ -17,10 +17,14 @@ class HaveSubCategoryController extends Controller
 
         $sub_categories = SubCategory::where('category_id', $current_category->id)->get();
 
-        return view('have_category_index',[
+        $items = SubCategory::withCount('items')->get();
+
+        return view('sub_category.sub_category_index',[
             'categories' =>  $categories,
+            'current_category' => $current_category,
             'current_category_id' => $current_category->id,
             'sub_categories' => $sub_categories,
+            'items' => $items,
         ]);
     }
 }

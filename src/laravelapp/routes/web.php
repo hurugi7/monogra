@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HaveCategoryController;
+use App\Http\Controllers\HaveItemController;
 use App\Http\Controllers\HaveSubCategoryController;
+use Illuminate\Contracts\Pipeline\Hub;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +17,7 @@ use App\Http\Controllers\HaveSubCategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -58,5 +59,11 @@ Route::controller(WantSubCategoryController::class)->group(function () {
     Route::put('/want/categories/{category}/sub_categories/{sub_category}', 'update')->name('want_sub_category.update');
     Route::delete('/want/categories/{category}/sub_categories/{sub_category}', 'destroy')->name('want_sub_category.destroy');
 });
+
+Route::controller(HaveItemController::class)->group(function () {
+    Route::get('have/categories/{category}/sub_categories/{sub_category}/items', 'index')->name('have_item.index');
+});
+
+Auth::routes();
 
 require __DIR__.'/auth.php';

@@ -8,14 +8,32 @@ use App\Models\SubCategory;
 
 class HaveCategoryController extends Controller
 {
-    public function create()
+    public function index()
     {
-        return 'Hello, world!';
+        $categories = Category::withCount('subCategories')->get();
+
+        $items = SubCategory::withCount('items')->get();
+
+        return view('category.category_index', [
+            'categories' => $categories,
+            'items' => $items,
+        ]);
     }
 
-    public function store()
+    public function create()
     {
-        return 'Hello, world!';
+        return view('category.category_create');
+    }
+
+    public function store(Request $request)
+    {
+        $category = new Category();
+
+        $category->category_name = $request->category_name;
+
+        $category->save();
+
+        return redirect()->route('category.category_index');
     }
 
     public function edit()
