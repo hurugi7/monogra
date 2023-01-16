@@ -49,8 +49,10 @@ class HaveCategoryController extends Controller
         return 'Hello, world!';
     }
 
-    public function destroy()
+    public function destroy(int $category)
     {
-        return 'Hello, world!';
+        $category = Auth::user()->Category::find($category);
+        $category->delete();
+        return redirect()->route('have_category.index');
     }
 }
