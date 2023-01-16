@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\User;
 use App\Models\SubCategory;
+use Illuminate\Support\Facades\Auth;
 
 class HaveCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::withCount('subCategories')->get();
+        $categories = Auth::user()->categories()->withCount('subCategories')->get();
 
         $items = SubCategory::withCount('items')->get();
 
@@ -31,9 +33,9 @@ class HaveCategoryController extends Controller
 
         $category->category_name = $request->category_name;
 
-        $category->save();
+        Auth::user()->categories()->save($category);
 
-        return redirect()->route('category.category_index');
+        return redirect()->route('have_category.index');
     }
 
     public function edit()
