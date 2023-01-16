@@ -22,10 +22,11 @@
   <x-dropdown>
     <x-slot name="trigger">
       <div class="">
-        <img class="object-cover h-8 w-8 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white inline-block" src="" alt="ユーザーアイコン">
+        <img class="object-cover h-8 w-8 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white inline-block" src="#" alt="ユーザーアイコン">
         <i class="fa fa-caret-down inline-block align-middle"></i>
       </div>
     </x-slot>
+    @if(Auth::check())
     <x-slot name="content">
       <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
         ゴミ箱
@@ -34,6 +35,16 @@
       <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
         ユーザー情報
       </a>
+      <form action="{{ route('logout') }}" method="post" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
+        @csrf
+        <input type="submit" value="ログアウト">
+      </form>
     </x-slot>
+    @else
+    <x-slot name="content">
+      <a href="{{ route('login') }}" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">ログイン</a>
+      <a href="{{ route('register') }}" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">会員登録</a>
+    </x-slot>
+    @endif
   </x-dropdown>
 </nav>
