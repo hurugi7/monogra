@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCategory;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
@@ -27,7 +28,7 @@ class HaveCategoryController extends Controller
         return view('category.category_create');
     }
 
-    public function store(Request $request)
+    public function store(CreateCategory $request)
     {
         $category = new Category();
 
