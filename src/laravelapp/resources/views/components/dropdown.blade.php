@@ -21,7 +21,7 @@ switch ($width) {
 }
 @endphp
 
-<div class="relative block" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
+<div class="block" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
@@ -35,7 +35,7 @@ switch ($width) {
             x-transition:leave-end="transform opacity-0 scale-95"
             style="display: none;"
             @click="open = false">
-        <div class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
+        <div class="right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
             {{ $content }}
         </div>
     </div>
