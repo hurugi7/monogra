@@ -51,7 +51,7 @@ class HaveCategoryController extends Controller
 
     public function destroy(int $category)
     {
-        $category = Auth::user()->Category::find($category);
+        $category = Category::find($category);
         $category->delete();
         return redirect()->route('have_category.index');
     }
