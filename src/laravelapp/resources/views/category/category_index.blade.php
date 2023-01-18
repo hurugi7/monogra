@@ -37,7 +37,7 @@
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     <a href="{{ route('have_sub_category.index', ['category' => $category->id]) }}">
                       <button class="shadow-lg px-2 py-1  bg-green-300 text-white font-sm rounded  hover:bg-green-400 hover:shadow-sm hover:translate-y-0.5 transform transition ">
-                        サブカテゴリへ
+                        サブカテゴリ一覧へ
                       </button>
                     </a>
                   </td>
