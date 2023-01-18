@@ -39,14 +39,24 @@ class HaveCategoryController extends Controller
         return redirect()->route('have_category.index');
     }
 
-    public function edit()
+    public function edit(int $category)
     {
-        return 'Hello, world!';
+        $category = Category::find($category);
+
+        return view('category.category_edit', [
+            'category' => $category,
+        ]);
     }
 
-    public function update()
+    public function update(CreateCategory $request, int $category)
     {
-        return 'Hello, world!';
+        $category = Category::find($category);
+
+        $category->category_name = $request->category_name;
+
+        Auth::user()->categories()->save($category);
+
+        return redirect()->route('have_category.index');
     }
 
     public function destroy(int $category)
