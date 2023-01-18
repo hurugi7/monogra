@@ -48,4 +48,17 @@ class HaveSubCategoryController extends Controller
             'category' => $current_category->id,
         ]);
     }
+
+    public function destroy(int $category, int $sub_category)
+    {
+        $current_category = Category::find($category);
+
+        $sub_category = SubCategory::where('category_id', $current_category->id)->get()->find($sub_category);
+
+        $sub_category->delete();
+
+        return redirect()->route('have_sub_category.index', [
+            'category' => $current_category->id,
+        ]);
+    }
 }
