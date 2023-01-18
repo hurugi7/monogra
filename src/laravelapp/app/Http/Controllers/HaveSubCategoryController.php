@@ -61,4 +61,31 @@ class HaveSubCategoryController extends Controller
             'category' => $current_category->id,
         ]);
     }
+
+    public function edit(int $category, int $sub_category)
+    {
+        $current_category = Category::find($category);
+
+        $sub_category = SubCategory::where('category_id', $current_category->id)->get()->find($sub_category);
+
+        return view('sub_category.sub_category_edit', [
+            'current_category_id' => $current_category->id,
+            'sub_category' => $sub_category,
+        ]);
+    }
+
+    public function update(CreateSubCategory $request, int $category, int $sub_category)
+    {
+        $current_category = Category::find($category);
+
+        $sub_category = SubCategory::where('category_id', $current_category->id)->get()->find($sub_category);
+
+        $sub_category->sub_category_name = $request->sub_category_name;
+
+        $current_category->subCategories()->save($sub_category);
+
+        return redirect()->route('have_sub_category.index', [
+            'category' => $current_category->id,
+        ]);
+    }
 }
