@@ -45,7 +45,7 @@
                     </a>
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <a href="#">
+                    <a href="{{ route('have_sub_category.edit', ['category' => $current_category_id, 'sub_category' => $sub_category->id]) }}">
                       <button class="shadow-lg px-2 py-1  bg-blue-300 text-white font-sm rounded  hover:bg-blue-400 hover:shadow-sm hover:translate-y-0.5 transform transition ">
                         編集
                       </button>
