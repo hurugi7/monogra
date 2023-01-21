@@ -32,7 +32,8 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            //画像ファイルがすべて/public/item下にアップされる。
+            'root' => public_path('item'),
         ],
 
         'public' => [

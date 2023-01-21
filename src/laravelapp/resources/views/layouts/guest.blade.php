@@ -8,13 +8,17 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+
     </head>
     <body>
         <div class="font-note text-gray-900 antialiased">

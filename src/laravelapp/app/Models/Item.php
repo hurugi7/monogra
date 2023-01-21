@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Category;
+use App\Models\ItemPhoto;
 use App\Models\SubCategory;
 
 class Item extends Model
@@ -14,5 +14,10 @@ class Item extends Model
     public function subCategory()
     {
         return $this->belongsTo(SubCategory::class);
+    }
+
+    public function photos()
+    {
+        return $this->hasMany(ItemPhoto::class);
     }
 }

@@ -68,6 +68,12 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::controller(HaveItemController::class)->group(function () {
         Route::get('have/categories/{category}/sub_categories/{sub_category}/items', 'index')->name('have_item.index');
+        Route::get('have/categories/{category}/sub_categories/{sub_category}/items/create', 'create')->name('have_item.create');
+        Route::post('have/categories/{category}/sub_categories/{sub_category}/items/create', 'store')->name('have_item.store');
+        Route::get('have/categories/{category}/sub_categories/{sub_category}/items/{item}', 'show')->name('have_item.show');
+        Route::get('have/categories/{category}/sub_categories/{sub_category}/items/{item}/edit', 'edit')->name('have_item.edit');
+        Route::put('have/categories/{category}/sub_categories/{sub_category}/items/{item}', 'update')->name('have_item.update');
+        Route::delete('have/categories/{category}/sub_categories/{sub_category}/items/{item}', 'destroy')->name('have_item.destroy');
     });
 });
 
