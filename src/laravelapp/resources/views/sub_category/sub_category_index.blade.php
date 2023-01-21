@@ -38,9 +38,9 @@
                     {{ $sub_category->items_count }}
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <a href="{{ route('have_sub_category.index', ['category' => $current_category_id]) }}">
+                    <a href="{{ route('have_item.index', ['category' => $current_category_id, 'sub_category' => $sub_category->id]) }}">
                       <button class="shadow-lg px-2 py-1  bg-green-300 text-white font-sm rounded  hover:bg-green-400 hover:shadow-sm hover:translate-y-0.5 transform transition ">
-                        モノ一覧へ
+                        アイテム一覧へ
                       </button>
                     </a>
                   </td>
