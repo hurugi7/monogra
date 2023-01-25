@@ -8,6 +8,7 @@ use App\Models\SubCategory;
 use App\Models\Item;
 use App\Models\ItemPhoto;
 use App\Http\Requests\CreateItem;
+use App\Http\Requests\CreateItemPhoto;
 
 class HaveItemController extends Controller
 {
@@ -56,13 +57,17 @@ class HaveItemController extends Controller
 
         $current_sub_category->items()->save($item);
 
-        foreach($request->file('files') as $each_file) {
-            //画像のオリジナルネームを取得
-            $file_name = $each_file['photo']->getClientOriginalName();
-            // 画像を保存して、そのパスを$pathに保存
-            $path = $each_file['photo']->storeAs('photos', $file_name);
-            // photosメソッドにより、商品に紐付けられた画像を保存する
-            $item->photos()->create(['path' => $path]);
+        if($request->file('files')) {
+            foreach($request->file('files') as $each_file) {
+                //画像のオリジナルネームを取得
+                $file_name = $each_file['photo']->getClientOriginalName();
+                //大文字の拡張子だとファイル判定されないため、すべて小文字にする
+                $file_name = mb_strtolower($file_name);
+                // 画像を保存して、そのパスを$pathに保存
+                $path = $each_file['photo']->storeAs('photos', $file_name);
+                // photosメソッドにより、商品に紐付けられた画像を保存する
+                $item->photos()->create(['path' => $path]);
+            }
         }
 
         return redirect()->route('have_item.index', [
@@ -70,5 +75,23 @@ class HaveItemController extends Controller
             'sub_category' => $current_sub_category->id
         ]);
 
+    }
+
+    public function show(int $category, int $sub_category, int $item)
+    {
+        $current_category = Category::find($category);
+
+        $current_sub_category = SubCategory::find($sub_category);
+
+        $current_item = Item::find($item);
+
+        $photos = $current_item->photos()->where('item_id', $current_item->id)->get();
+
+        return view('item.item_show', [
+            'current_category_id' => $current_category->id,
+            'current_sub_category_id' => $current_sub_category->id,
+            'current_item' => $current_item,
+            'photos' => $photos,
+        ]);
     }
 }
