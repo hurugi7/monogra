@@ -29,7 +29,8 @@ class CreateItem extends FormRequest
             'purchased_at' => 'date|nullable',
             'purchased_in' => 'string|max:30|nullable',
             'price' => 'numeric|nullable',
-            'note' => 'string|nullable'
+            'note' => 'string|nullable',
+            'files.*.photo' => 'image|mimes:jpeg,png|max:256000',
         ];
     }
 
@@ -39,7 +40,8 @@ class CreateItem extends FormRequest
             'item_name' => 'アイテム名',
             'item_num' => '個数',
             'purchased_at' => '購入日',
-            'price' => '値段'
+            'price' => '値段',
+            'files.*.photo' =>'アイテム写真'
         ];
     }
 }
