@@ -62,7 +62,7 @@
                       <button class="shadow-lg px-2 py-1  bg-red-300 text-white font-sm rounded  hover:bg-red-400 hover:shadow-sm hover:translate-y-0.5 transform transition " @click="open = true">
                         削除
                       </button>
-                      <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0,0,0,.5);" x-show="open">
+                      <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-10" style="background-color: rgba(0,0,0,.5);" x-show="open">
                         <div class="text-left bg-white h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl rounded mx-2 md:mx-0" @click.away="open = false">
                           <h2 class="text-2xl">削除の確認</h2>
                           <p class="p-3">「{{ $item->item_name }}」を削除しますか？</p>
