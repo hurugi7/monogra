@@ -94,4 +94,22 @@ class HaveItemController extends Controller
             'photos' => $photos,
         ]);
     }
+
+    public function destroy(int $category, int $sub_category, int $item)
+    {
+        $current_category = Category::find($category);
+
+        $current_sub_category = SubCategory::find($sub_category);
+
+        $current_item = Item::find($item);
+
+        $current_item->photos()->delete();
+
+        $current_item->delete();
+
+        return redirect()->route('have_item.index', [
+            'category' => $current_category->id,
+            'sub_category' => $current_sub_category->id,
+        ]);
+    }
 }
