@@ -14,4 +14,9 @@ yarn-error.log
 /.idea
 /.vscode
 /public/css/app.css
+/public/js/app.js
 /public/mix-manifest.json
+package-lock.json
+package.json
+/public/item
+tailwind.cofig.js
