@@ -8599,6 +8599,9 @@ select {
 .w-48 {
   width: 12rem;
 }
+.w-1\/6 {
+  width: 16.666667%;
+}
 .w-4 {
   width: 1rem;
 }
