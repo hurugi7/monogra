@@ -32,7 +32,7 @@
                     {{ $category->category_name }}
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    {{ $category->categories_count * $items[0]->items_count }}
+                    {{-- 数の計算の実装 --}}
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     <a href="{{ route('have_sub_category.index', ['category' => $category->id]) }}">
