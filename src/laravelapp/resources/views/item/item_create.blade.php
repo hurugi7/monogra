@@ -28,7 +28,10 @@
         <label for="image_path" class="block text-sm font-bold text-gray-900 mb-2">
           アイテム写真（複数選択可）
         </label>
-        <input type="file" name="files[][photo]" multiple>
+        <div id="box">
+          <input type="file" name="files[][photo]" onchange="loop(event, 'item1')" multiple>
+          <div id="preview-item1" class="flex mt-2 w-1/6"></div>
+        </div>
       </div>
       <div>
         <label for="price" class="block text-sm font-bold text-gray-900 mb-2">
@@ -75,5 +78,39 @@
     flatpickr('#purchased_at', {
       locale: "ja"
     });
+
+    var cnt = 0; // アップロードカウント
+    var tmpId = 'tmp-' + cnt; // 一時保存用のID
+    //アップロードファイルの数だけプレビュー関数をループさせる
+    function loop(event, id){
+        for (let file of event.target.files)
+        {
+            imgPreView(file, id);
+        }
+        // 一時保存用のIDを更新
+        tmpId = 'tmp-' + ++cnt;
+    }
+    //アップロードファイルのプレビューを表示
+    function imgPreView(file, id){
+        let preview = document.getElementById("preview-"+ id);
+        let previewImages = document.getElementsByClassName(tmpId);
+        let reader = new FileReader();
+
+        if(previewImages != null) {
+            for(let img of previewImages){
+                preview.removeChild(img);
+            }
+        }
+
+        reader.onload = function(event) {
+            var img = document.createElement("img");
+            img.setAttribute("src", reader.result);
+            img.setAttribute("id", "previewImage-" + id);
+            img.setAttribute("class", tmpId);
+            preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+    }
   </script>
 </x-guest-layout>
