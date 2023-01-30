@@ -42,7 +42,6 @@
         @endif
         <div id="box">
           <input type="file" name="files[][photo]" onchange="loop(event, 'item1')" multiple>
-          <div class="mt-2">追加する画像</div>
           <div id="preview-item1" class="flex mt-2 w-1/6"></div>
         </div>
       </div>
