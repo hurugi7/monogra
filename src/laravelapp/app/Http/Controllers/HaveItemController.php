@@ -9,6 +9,7 @@ use App\Models\Item;
 use App\Models\ItemPhoto;
 use App\Http\Requests\CreateItem;
 use App\Http\Requests\CreateItemPhoto;
+use Illuminate\Support\Facades\Auth;
 
 class HaveItemController extends Controller
 {
@@ -54,6 +55,7 @@ class HaveItemController extends Controller
         $item->purchased_at = $request->purchased_at;
         $item->purchased_in = $request->purchased_in;
         $item->note = $request->note;
+        $item->user_id = Auth::user()->id;
 
         $current_sub_category->items()->save($item);
 

@@ -41,8 +41,10 @@ class HaveSubCategoryController extends Controller
         $sub_category = new SubCategory();
 
         $sub_category->sub_category_name = $request->sub_category_name;
+        $sub_category->user_id = Auth::user()->id;
 
         $current_category->subCategories()->save($sub_category);
+
 
         return redirect()->route('have_sub_category.index', [
             'category' => $current_category->id,
