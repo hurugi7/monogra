@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HaveCategoryController;
 use App\Http\Controllers\HaveItemController;
 use App\Http\Controllers\HaveSubCategoryController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Contracts\Pipeline\Hub;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::put('have/categories/{category}/sub_categories/{sub_category}/items/{item}', 'update')->name('have_item.update');
         Route::delete('have/categories/{category}/sub_categories/{sub_category}/items/{item}', 'destroy')->name('have_item.destroy');
     });
+
+    Route::get('/search', [SearchController::class, 'search'])->name('search');
 });
 
 require __DIR__.'/auth.php';

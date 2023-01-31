@@ -13,12 +13,10 @@
       <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">欲しいモノ</a>
     </x-slot>
   </x-dropdown>
-
-  <form action="#" method="get" class="ml-auto">
-    <input type="search" name="search" placeholder="モノを検索" class="rounded-md">
-    <button class="shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition ">検索</button>
-  </form>
-
+  <form action="{{ route('search') }}" method="get" class="m-5">
+      <input type="search" name="search" placeholder="アイテムを検索" class="rounded-md">
+      <button type="submit" class="shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition ">検索</button>
+    </form>
   <x-dropdown>
     <x-slot name="trigger">
       <div class="">
