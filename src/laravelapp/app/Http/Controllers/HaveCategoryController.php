@@ -5,21 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateCategory;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Item;
 use App\Models\User;
 use App\Models\SubCategory;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Auth;
 
 class HaveCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Auth::user()->categories()->withCount('subCategories')->get();
-
-        $items = SubCategory::withCount('items')->get();
+        $categories = Auth::user()->categories()->get();
 
         return view('category.category_index', [
             'categories' => $categories,
-            'items' => $items,
         ]);
     }
 
