@@ -1,6 +1,6 @@
 <x-guest-layout>
   <x-header/>
-  <d iv class="bg-white items-center mx-auto">
+  <div class="bg-white items-center mx-auto">
     <div class="flex py-5 px-5 items-center bg-gray-200">
       <a href="{{ route('have_sub_category.index', ['category' => $current_category_id]) }}" class="py-3 mr-6">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
