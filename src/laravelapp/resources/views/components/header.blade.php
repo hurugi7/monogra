@@ -55,16 +55,18 @@
     >
       <li class="mr-3">
         <a
-          class="inline-block py-2 px-4 text-white no-underline"
+          class="inline-block py-2 px-4 text-white no-underline text-center"
           href="#"
           @click="isOpen = false"
-          >User
+          >
+          <img src="{{ asset($user->profile_img_path) }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2 mb-2">
+          <div>{{ $user->name }}</div>
         </a>
       </li>
       <li class="mr-3">
         <a
           class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-          href="#"
+          href="{{ route('logout') }}"
           @click="isOpen = false"
           >ログアウト
         </a>
