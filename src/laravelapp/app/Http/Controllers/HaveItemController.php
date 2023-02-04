@@ -15,6 +15,8 @@ class HaveItemController extends Controller
 {
     public function index(int $category, int $sub_category)
     {
+        $user = Auth::user();
+
         $current_category = Category::find($category);
 
         $current_sub_category = SubCategory::find($sub_category);
@@ -26,11 +28,14 @@ class HaveItemController extends Controller
             'current_sub_category' => $current_sub_category,
             'current_sub_category_id' => $current_sub_category->id,
             'items' => $items,
+            'user' => $user,
         ]);
     }
 
     public function create(int $category, int $sub_category)
     {
+        $user = Auth::user();
+
         $current_category = Category::find($category);
 
         $current_sub_category = SubCategory::find($sub_category);
@@ -38,6 +43,7 @@ class HaveItemController extends Controller
         return view('item.item_create', [
             'current_category_id' => $current_category->id,
             'current_sub_category_id' => $current_sub_category->id,
+            'user' => $user,
         ]);
     }
 
@@ -81,6 +87,8 @@ class HaveItemController extends Controller
 
     public function show(int $category, int $sub_category, int $item)
     {
+        $user = Auth::user();
+
         $current_category = Category::find($category);
 
         $current_sub_category = SubCategory::find($sub_category);
@@ -94,6 +102,7 @@ class HaveItemController extends Controller
             'current_sub_category_id' => $current_sub_category->id,
             'current_item' => $current_item,
             'photos' => $photos,
+            'user' => $user,
         ]);
     }
 
@@ -117,6 +126,8 @@ class HaveItemController extends Controller
 
     public function edit(int $category, int $sub_category, int $item)
     {
+        $user = Auth::user();
+
         $current_category = Category::find($category);
 
         $current_sub_category = SubCategory::find($sub_category);
@@ -130,6 +141,7 @@ class HaveItemController extends Controller
             'current_sub_category_id' => $current_sub_category->id,
             'current_item' => $current_item,
             'photos' => $photos,
+            'user' => $user,
         ]);
     }
 

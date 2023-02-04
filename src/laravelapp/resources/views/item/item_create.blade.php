@@ -1,5 +1,5 @@
 <x-guest-layout>
-  <x-header/>
+  <x-headers :user="$user"/>
   <div class="mt-16 mx-60 border-solid border-gray-300 rounded-lg border shadow-sm">
     <div class="flex px-2 py-3 border-solid border-gray-300 border-b">
       <a href="{{ route('have_item.index' ,['category' => $current_category_id, 'sub_category' => $current_sub_category_id]) }}" class="py-3 mr-6">

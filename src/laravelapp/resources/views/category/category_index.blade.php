@@ -1,5 +1,5 @@
 <x-guest-layout>
-  <x-header/>
+  <x-header :user="$user"/>
   <div class="bg-white items-center mx-auto">
     <div class="flex justify-between py-5 px-5 items-center bg-gray-200">
       <div>カテゴリ一覧</div>

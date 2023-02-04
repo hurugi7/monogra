@@ -14,6 +14,8 @@ class HaveSubCategoryController extends Controller
 {
     public function index(int $category)
     {
+        $user = Auth::user();
+
         $current_category = Category::find($category);
 
         $sub_categories = SubCategory::where('category_id', $current_category->id)->withCount('items')->get();
@@ -22,15 +24,19 @@ class HaveSubCategoryController extends Controller
             'current_category' => $current_category,
             'current_category_id' => $current_category->id,
             'sub_categories' => $sub_categories,
+            'user' => $user,
         ]);
     }
 
     public function create(int $category)
     {
+        $user = Auth::user();
+
         $current_category = Category::find($category);
 
         return view('sub_category.sub_category_create', [
             'current_category_id' => $current_category->id,
+            'user' => $user,
         ]);
     }
 
@@ -66,6 +72,8 @@ class HaveSubCategoryController extends Controller
 
     public function edit(int $category, int $sub_category)
     {
+        $user = Auth::user();
+
         $current_category = Category::find($category);
 
         $sub_category = SubCategory::where('category_id', $current_category->id)->get()->find($sub_category);
@@ -73,6 +81,7 @@ class HaveSubCategoryController extends Controller
         return view('sub_category.sub_category_edit', [
             'current_category_id' => $current_category->id,
             'sub_category' => $sub_category,
+            'user' => $user,
         ]);
     }
 

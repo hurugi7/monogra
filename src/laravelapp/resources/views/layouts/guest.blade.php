@@ -26,7 +26,7 @@
 
     </head>
     <body>
-        <div class="font-note text-gray-900 antialiased">
+        <div class="container font-note text-gray-900 antialiased w-full mx-auto max-w-4xl">
             {{ $slot }}
         </div>
     </body>

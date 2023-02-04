@@ -1,5 +1,5 @@
 <x-guest-layout>
-  <x-header/>
+  <x-header :user="$user"/>
   <div>
     <div>まずはカテゴリーを作成しましょう</div>
     <div>

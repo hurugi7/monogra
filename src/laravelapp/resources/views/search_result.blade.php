@@ -9,7 +9,7 @@
     <div class="">
       <div class="mt-2">
         @foreach($items as $item)
-          <a href="{{ route('have_item.show', ['category' => $item->subCategory->category_id, 'sub_category' => $item->sub_category_id, 'item' => $item->id]) }}" class="container mx-auto">
+          <a href="{{ route('have_item.show', ['category' => $item->subCategory->category_id, 'sub_category' => $item->sub_category_id, 'item' => $item->id]) }}">
             <div class="">{{ $item->item_name }}</div>
           </a>
         @endforeach

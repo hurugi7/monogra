@@ -21,6 +21,9 @@ module.exports = {
             spacing: {
                 '60%': '60%',
             },
+            fontSize: {
+                0: '0rem',
+            },
         },
     },
 

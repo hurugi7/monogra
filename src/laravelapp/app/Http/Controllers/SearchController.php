@@ -14,6 +14,8 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
+        $user = Auth::user();
+
         $search = $request->input('search');
 
         $user_id = Auth::user()->id;
@@ -30,6 +32,7 @@ class SearchController extends Controller
         return view('search_result' ,[
             'items' => $items,
             'search' => $search,
+            'user' => $user,
         ]);
     }
 }

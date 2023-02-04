@@ -15,16 +15,21 @@ class HaveCategoryController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
         $categories = Auth::user()->categories()->get();
 
         return view('category.category_index', [
+            'user' => $user,
             'categories' => $categories,
         ]);
     }
 
     public function create()
     {
-        return view('category.category_create');
+        $user = Auth::user();
+        return view('category.category_create',[
+            'user' => $user,
+        ]);
     }
 
     public function store(CreateCategory $request)
@@ -40,10 +45,13 @@ class HaveCategoryController extends Controller
 
     public function edit(int $category)
     {
+        $user = Auth::user();
+
         $category = Category::find($category);
 
         return view('category.category_edit', [
             'category' => $category,
+            'user' => $user,
         ]);
     }
 

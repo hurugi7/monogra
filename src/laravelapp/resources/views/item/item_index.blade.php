@@ -1,5 +1,5 @@
 <x-guest-layout>
-  <x-header/>
+  <x-header :user="$user"/>
   <div class="bg-white items-center mx-auto">
     <div class="flex py-5 px-5 items-center bg-gray-200">
       <a href="{{ route('have_sub_category.index', ['category' => $current_category_id]) }}" class="py-3 mr-6">
@@ -17,7 +17,7 @@
             <table class="min-w-full text-left">
               <thead class="border-b bg-gray-100">
                 <tr>
-                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                  <th scope="col" colspan="" class="text-sm font-medium text-gray-900 px-6 py-4">
                     アイテム名
                   </th>
                   <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
@@ -34,8 +34,13 @@
               <tbody>
                 @foreach($items as $item)
                 <tr class="bg-white border-b">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {{ $item->item_name }}
+                  <td class="flex items-center px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    @if($item->photos()->where('item_id', $item->id)->exists())
+                      <img src="/item/{{ $item->photos()->first()->path }}" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
+                    @else
+                      <img src="/item/photos/20200505_noimage.png" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
+                    @endif
+                    <div>{{ $item->item_name }}</div>
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     {{ $item->item_num }}
