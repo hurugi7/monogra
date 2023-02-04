@@ -9,6 +9,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+
+        $category = $user->categories()->first();
+
+        if(is_null($category)) {
+            return view('home', [
+                'user' => $user,
+            ]);
+        }
+
+        return redirect()->route('have_category.index', [
+            'user' => $user,
+        ]);
+
     }
 }
