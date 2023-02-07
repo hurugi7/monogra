@@ -69,13 +69,9 @@ class HaveItemController extends Controller
 
         if($request->file('files')) {
             foreach($request->file('files') as $each_file) {
-                // 画像のオリジナルネームを取得
-                $file_name = $each_file['photo']->getClientOriginalName();
-                // 大文字の拡張子だとファイル判定されないため、すべて小文字にする
-                $file_name = mb_strtolower($file_name);
                 // 画像を保存して、そのパスを$pathに保存
-                $path = $each_file['photo']->storeAs('', $file_name, 'public');
-                // photosメソッドにより、商品に紐付けられた画像を保存する
+                $path = $each_file['photo']->store('', 'public');
+                // photosメソッドにより、商品に紐付けられた画像をDBに保存する
                 $item->photos()->create(['path' => $path]);
             }
         }
@@ -161,16 +157,20 @@ class HaveItemController extends Controller
 
         $item = Item::find($item);
 
-        $photo_num = $item->photos()->count();
+        $photo_num = 0;
 
-        $upload_photo_num = count($request->file('files'));
+        if($item->photos()->exists()){
+            $photo_num = $item->photos()->count();
+        }
+
+        if($request->file('files')){
+            $upload_photo_num = count($request->file('files'));
+        }
 
         // 画像の合計が５枚以下の場合
         if($request->file('files') && ($photo_num + $upload_photo_num) < 6) {
             foreach($request->file('files') as $each_file) {
-                $file_name = $each_file['photo']->getClientOriginalName();
-                $file_name = mb_strtolower($file_name);
-                $path = $each_file['photo']->storeAs('', $file_name, 'public');
+                $path = $each_file['photo']->store('', 'public');
                 $item->photos()->create(['path' => $path]);
             }
         // 画像の合計が５枚より多い場合
