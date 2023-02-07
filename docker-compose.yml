@@ -9,6 +9,7 @@ services:
     container_name: laravel_app
     volumes:
       - ./src:/var/www/html
+      - ./docker/app/php.ini:/usr/local/etc/php/php.ini
 
   db:
     image: mysql:5.7
