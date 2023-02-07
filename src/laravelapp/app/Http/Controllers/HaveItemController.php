@@ -10,6 +10,7 @@ use App\Models\ItemPhoto;
 use App\Http\Requests\CreateItem;
 use App\Http\Requests\CreateItemPhoto;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HaveItemController extends Controller
 {
@@ -22,6 +23,7 @@ class HaveItemController extends Controller
         $current_sub_category = SubCategory::find($sub_category);
 
         $items = Item::where('sub_category_id', $current_sub_category->id)->get();
+
 
         return view('item.item_index',[
             'current_category_id' => $current_category->id,
@@ -72,7 +74,7 @@ class HaveItemController extends Controller
                 //大文字の拡張子だとファイル判定されないため、すべて小文字にする
                 $file_name = mb_strtolower($file_name);
                 // 画像を保存して、そのパスを$pathに保存
-                $path = $each_file['photo']->storeAs('photos', $file_name);
+                $path = $each_file['photo']->storeAs('', $file_name, 'public');
                 // photosメソッドにより、商品に紐付けられた画像を保存する
                 $item->photos()->create(['path' => $path]);
             }
@@ -95,7 +97,7 @@ class HaveItemController extends Controller
 
         $current_item = Item::find($item);
 
-        $photos = $current_item->photos()->where('item_id', $current_item->id)->get();
+        $photos = $current_item->photos()->get();
 
         return view('item.item_show', [
             'current_category_id' => $current_category->id,
@@ -114,7 +116,13 @@ class HaveItemController extends Controller
 
         $current_item = Item::find($item);
 
-        $current_item->photos()->delete();
+        $photos = $current_item->photos()->get();
+
+        //画像の削除処理
+        foreach($photos as $photo) {
+            Storage::disk('public')->delete($photo->path);
+            $photo->delete();
+        }
 
         $current_item->delete();
 
@@ -134,7 +142,7 @@ class HaveItemController extends Controller
 
         $current_item = Item::find($item);
 
-        $photos = $current_item->photos()->where('item_id', $current_item->id)->get();
+        $photos = $current_item->photos()->get();
 
         return view('item.item_edit', [
             'current_category_id' => $current_category->id,
@@ -169,7 +177,7 @@ class HaveItemController extends Controller
                 //大文字の拡張子だとファイル判定されないため、すべて小文字にする
                 $file_name = mb_strtolower($file_name);
                 // 画像を保存して、そのパスを$pathに保存
-                $path = $each_file['photo']->storeAs('photos', $file_name);
+                $path = $each_file['photo']->storeAs('', $file_name, 'public');
                 // photosメソッドにより、商品に紐付けられた画像を保存する
                 $item->photos()->create(['path' => $path]);
             }
