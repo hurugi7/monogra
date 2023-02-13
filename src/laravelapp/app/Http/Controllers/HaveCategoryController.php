@@ -16,7 +16,7 @@ class HaveCategoryController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $categories = Auth::user()->categories()->get();
+        session(['checkPointURL' => url()->current()]);
 
         return view('category.category_index', [
             'user' => $user,
@@ -27,6 +27,9 @@ class HaveCategoryController extends Controller
     public function create()
     {
         $user = Auth::user();
+
+        session(['checkPointURL' => url()->current()]);
+
         return view('category.category_create',[
             'user' => $user,
         ]);
@@ -47,6 +50,7 @@ class HaveCategoryController extends Controller
     {
         $user = Auth::user();
 
+        session(['checkPointURL' => url()->current()]);
 
         return view('category.category_edit', [
             'category' => $category,

@@ -20,6 +20,7 @@ class HaveItemController extends Controller
 
         $items = Item::where('sub_category_id', $sub_category->id)->get();
 
+        session(['checkPointURL' => url()->current()]);
 
         return view('item.item_index',[
             'current_category_id' => $category->id,
@@ -34,6 +35,7 @@ class HaveItemController extends Controller
     {
         $user = Auth::user();
 
+        session(['checkPointURL' => url()->current()]);
 
         return view('item.item_create', [
             'current_category_id' => $category->id,

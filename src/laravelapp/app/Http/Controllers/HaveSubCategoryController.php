@@ -16,6 +16,9 @@ class HaveSubCategoryController extends Controller
     {
         $user = Auth::user();
 
+        $sub_categories = SubCategory::where('category_id', $category->id)->withCount('items')->get();
+
+        session(['checkPointURL' => url()->current()]);
 
 
         return view('sub_category.sub_category_index',[
@@ -30,6 +33,7 @@ class HaveSubCategoryController extends Controller
     {
         $user = Auth::user();
 
+        session(['checkPointURL' => url()->current()]);
 
         return view('sub_category.sub_category_create', [
             'current_category_id' => $category->id,
@@ -64,6 +68,7 @@ class HaveSubCategoryController extends Controller
     {
         $user = Auth::user();
 
+        session(['checkPointURL' => url()->current()]);
 
         return view('sub_category.sub_category_edit', [
             'current_category_id' => $category->id,
