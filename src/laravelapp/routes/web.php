@@ -6,6 +6,7 @@ use App\Http\Controllers\HaveItemController;
 use App\Http\Controllers\HaveSubCategoryController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Contracts\Pipeline\Hub;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +26,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
+
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/user/edit', 'edit')->name('user.edit');
+        Route::put('/user/update', 'update')->name('user.update');
+    });
 
     Route::controller(HaveCategoryController::class)->group(function () {
         Route::get('/have/categories', 'index')->name('have_category.index');
