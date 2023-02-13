@@ -16,6 +16,8 @@ class HaveCategoryController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $categories = Auth::user()->categories()->withCount('items')->get();
+
         session(['checkPointURL' => url()->current()]);
 
         return view('category.category_index', [
