@@ -41,10 +41,9 @@
           />
         </svg>
   </button>
-
   <!--Menu-->
   <div
-    class="w-full flex-grow"
+    class="w-full flex"
     :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }"
     @click.away="isOpen = false"
     x-show.transition="true"
@@ -56,11 +55,15 @@
       <li class="mr-3">
         <a
           class="inline-block py-2 px-4 text-white no-underline text-center"
-          href="#"
+          href="{{ route('user.edit') }}"
           @click="isOpen = false"
           >
-          <img src="{{ asset($user->profile_img_path) }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2 mb-2">
-          <div>{{ $user->name }}</div>
+          @if(!is_null($user->profile_img_path))
+          <img src="{{ asset('storage/' . $user->profile_img_path) }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
+          @else
+          <img src="{{ asset('storage/icon-of-a-person-7.jpg') }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
+          @endif
+          <div>{{ old('name')?: $user->name }}</div>
         </a>
       </li>
       <li class="mr-3">
@@ -71,28 +74,12 @@
           >ログアウト
         </a>
       </li>
-      <li class="mr-3">
-        <a
-          class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-          href="#"
-          @click="isOpen = false"
-          >link
-        </a>
-      </li>
-      <li class="mr-3">
-        <a
-          class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-          href="#"
-          @click="isOpen = false"
-          >link
-        </a>
-      </li>
     </ul>
   </div>
 </nav>
 <!-- 検索バースマホ -->
 <form action="{{ route('search') }}" method="get" class="m-2 sm:hidden">
-    <div class="xl:w-96">
+    <div class="mx-2">
       <div class="input-group relative flex items-stretch w-full">
         <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="アイテムを検索" aria-label="Search" aria-describedby="button-addon2" name="search">
         <button class="btn inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="submit" id="button-addon2">
