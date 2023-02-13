@@ -1,11 +1,11 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="mt-16 mx-60 border-solid border-gray-300 rounded-lg border shadow-sm">
+  <div class="mx-4 mt-4 border-solid border-gray-300 rounded-lg border shadow-sm">
     <div class="flex px-2 py-3 border-solid border-gray-300 border-b">
-      <a href="{{ route('have_category.index') }}" class="py-3 mr-6">
+      <a href="{{ route('have_category.index') }}" class="mr-6 ml-2">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
       </a>
-      <div class="py-3">カテゴリを追加する</div>
+      <div class="font-semibold">カテゴリ追加</div>
     </div>
     @if($errors->any())
       <div class="mx-8 my-3 p-3 bg-red-200 rounded">
@@ -24,7 +24,7 @@
       <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" name="category_name" id="category_name" value="{{ old('category_name') }}">
       <div class="text-right">
         <a href="{{ route('have_category.store') }}">
-          <button class="text-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+          <button class="text-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-xs sm:text-sm">
             追加する
           </button>
         </a>
