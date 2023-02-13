@@ -43,11 +43,10 @@ class HaveCategoryController extends Controller
         return redirect()->route('have_category.index');
     }
 
-    public function edit(int $category)
+    public function edit(Category $category)
     {
         $user = Auth::user();
 
-        $category = Category::find($category);
 
         return view('category.category_edit', [
             'category' => $category,
@@ -55,10 +54,8 @@ class HaveCategoryController extends Controller
         ]);
     }
 
-    public function update(CreateCategory $request, int $category)
+    public function update(CreateCategory $request, Category $category)
     {
-        $category = Category::find($category);
-
         $category->category_name = $request->category_name;
 
         Auth::user()->categories()->save($category);
@@ -66,9 +63,8 @@ class HaveCategoryController extends Controller
         return redirect()->route('have_category.index');
     }
 
-    public function destroy(int $category)
+    public function destroy(Category $category)
     {
-        $category = Category::find($category);
         $category->delete();
         return redirect()->route('have_category.index');
     }

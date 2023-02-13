@@ -14,47 +14,36 @@ use Illuminate\Support\Facades\Storage;
 
 class HaveItemController extends Controller
 {
-    public function index(int $category, int $sub_category)
+    public function index(Category $category, subCategory $sub_category)
     {
         $user = Auth::user();
 
-        $current_category = Category::find($category);
-
-        $current_sub_category = SubCategory::find($sub_category);
-
-        $items = Item::where('sub_category_id', $current_sub_category->id)->get();
+        $items = Item::where('sub_category_id', $sub_category->id)->get();
 
 
         return view('item.item_index',[
-            'current_category_id' => $current_category->id,
-            'current_sub_category' => $current_sub_category,
-            'current_sub_category_id' => $current_sub_category->id,
+            'current_category_id' => $category->id,
+            'current_sub_category' => $sub_category,
+            'current_sub_category_id' => $sub_category->id,
             'items' => $items,
             'user' => $user,
         ]);
     }
 
-    public function create(int $category, int $sub_category)
+    public function create(Category $category, subCategory $sub_category)
     {
         $user = Auth::user();
 
-        $current_category = Category::find($category);
-
-        $current_sub_category = SubCategory::find($sub_category);
 
         return view('item.item_create', [
-            'current_category_id' => $current_category->id,
-            'current_sub_category_id' => $current_sub_category->id,
+            'current_category_id' => $category->id,
+            'current_sub_category_id' => $sub_category->id,
             'user' => $user,
         ]);
     }
 
-    public function store(CreateItem $request, int $category, int $sub_category)
+    public function store(CreateItem $request, Category $category, subCategory $sub_category)
     {
-        $current_category = Category::find($category);
-
-        $current_sub_category = SubCategory::find($sub_category);
-
         $item = new Item();
 
         $item->item_name = $request->item_name;
@@ -65,7 +54,7 @@ class HaveItemController extends Controller
         $item->note = $request->note;
         $item->user_id = Auth::user()->id;
 
-        $current_sub_category->items()->save($item);
+        $sub_category->items()->save($item);
 
         if($request->file('files')) {
             foreach($request->file('files') as $each_file) {
@@ -77,42 +66,33 @@ class HaveItemController extends Controller
         }
 
         return redirect()->route('have_item.index', [
-            'category' => $current_category->id,
-            'sub_category' => $current_sub_category->id
+            'category' => $category->id,
+            'sub_category' => $sub_category->id
         ]);
 
     }
 
-    public function show(int $category, int $sub_category, int $item)
+    public function show(Category $category, subCategory $sub_category, Item $item)
     {
         $user = Auth::user();
 
-        $current_category = Category::find($category);
+        $photos = $item->photos()->get();
 
-        $current_sub_category = SubCategory::find($sub_category);
+        session(['checkPointURL' => url()->current()]);
 
-        $current_item = Item::find($item);
-
-        $photos = $current_item->photos()->get();
 
         return view('item.item_show', [
-            'current_category_id' => $current_category->id,
-            'current_sub_category_id' => $current_sub_category->id,
-            'current_item' => $current_item,
+            'current_category_id' => $category->id,
+            'current_sub_category_id' => $sub_category->id,
+            'current_item' => $item,
             'photos' => $photos,
             'user' => $user,
         ]);
     }
 
-    public function destroy(int $category, int $sub_category, int $item)
+    public function destroy(Category $category, subCategory $sub_category, Item $item)
     {
-        $current_category = Category::find($category);
-
-        $current_sub_category = SubCategory::find($sub_category);
-
-        $current_item = Item::find($item);
-
-        $photos = $current_item->photos()->get();
+        $photos = $item->photos()->get();
 
         // 画像の削除処理
         foreach($photos as $photo) {
@@ -120,43 +100,33 @@ class HaveItemController extends Controller
             $photo->delete();
         }
 
-        $current_item->delete();
+        $item->delete();
 
         return redirect()->route('have_item.index', [
-            'category' => $current_category->id,
-            'sub_category' => $current_sub_category->id,
+            'category' => $category->id,
+            'sub_category' => $sub_category->id,
         ]);
     }
 
-    public function edit(int $category, int $sub_category, int $item)
+    public function edit(Category $category, subCategory $sub_category, Item $item)
     {
         $user = Auth::user();
 
-        $current_category = Category::find($category);
+        $photos = $item->photos()->get();
 
-        $current_sub_category = SubCategory::find($sub_category);
-
-        $current_item = Item::find($item);
-
-        $photos = $current_item->photos()->get();
+        session(['checkPointURL' => url()->current()]);
 
         return view('item.item_edit', [
-            'current_category_id' => $current_category->id,
-            'current_sub_category_id' => $current_sub_category->id,
-            'current_item' => $current_item,
+            'current_category_id' => $category->id,
+            'current_sub_category_id' => $sub_category->id,
+            'current_item' => $item,
             'photos' => $photos,
             'user' => $user,
         ]);
     }
 
-    public function update(CreateItem $request, int $category, int $sub_category, int $item)
+    public function update(CreateItem $request, Category $category, subCategory $sub_category, Item $item)
     {
-        $current_category = Category::find($category);
-
-        $current_sub_category = SubCategory::find($sub_category);
-
-        $item = Item::find($item);
-
         $photo_num = 0;
 
         if($item->photos()->exists()){
@@ -185,11 +155,12 @@ class HaveItemController extends Controller
         $item->purchased_in = $request->purchased_in;
         $item->note = $request->note;
 
-        $current_sub_category->items()->save($item);
+        $sub_category->items()->save($item);
 
-        return redirect()->route('have_item.index', [
-            'category' => $current_category->id,
-            'sub_category' => $current_sub_category->id,
+        return redirect()->route('have_item.show', [
+            'category' => $category->id,
+            'sub_category' => $sub_category->id,
+            'item' => $item->id,
         ]);
     }
 }

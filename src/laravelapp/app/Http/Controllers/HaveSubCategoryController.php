@@ -12,91 +12,74 @@ use Illuminate\Support\Facades\Auth;
 
 class HaveSubCategoryController extends Controller
 {
-    public function index(int $category)
+    public function index(Category $category)
     {
         $user = Auth::user();
 
-        $current_category = Category::find($category);
 
-        $sub_categories = SubCategory::where('category_id', $current_category->id)->withCount('items')->get();
 
         return view('sub_category.sub_category_index',[
-            'current_category' => $current_category,
-            'current_category_id' => $current_category->id,
+            'current_category' => $category,
+            'current_category_id' => $category->id,
             'sub_categories' => $sub_categories,
             'user' => $user,
         ]);
     }
 
-    public function create(int $category)
+    public function create(Category $category)
     {
         $user = Auth::user();
 
-        $current_category = Category::find($category);
 
         return view('sub_category.sub_category_create', [
-            'current_category_id' => $current_category->id,
+            'current_category_id' => $category->id,
             'user' => $user,
         ]);
     }
 
-    public function store(CreateSubCategory $request, int $category)
+    public function store(CreateSubCategory $request, Category $category)
     {
-        $current_category = Category::find($category);
-
         $sub_category = new SubCategory();
 
         $sub_category->sub_category_name = $request->sub_category_name;
         $sub_category->user_id = Auth::user()->id;
 
-        $current_category->subCategories()->save($sub_category);
-
+        $category->subCategories()->save($sub_category);
 
         return redirect()->route('have_sub_category.index', [
-            'category' => $current_category->id,
+            'category' => $category->id,
         ]);
     }
 
-    public function destroy(int $category, int $sub_category)
+    public function destroy(Category $category, subCategory $sub_category)
     {
-        $current_category = Category::find($category);
-
-        $sub_category = SubCategory::where('category_id', $current_category->id)->get()->find($sub_category);
-
         $sub_category->delete();
 
         return redirect()->route('have_sub_category.index', [
-            'category' => $current_category->id,
+            'category' => $category->id,
         ]);
     }
 
-    public function edit(int $category, int $sub_category)
+    public function edit(Category $category, subCategory $sub_category)
     {
         $user = Auth::user();
 
-        $current_category = Category::find($category);
-
-        $sub_category = SubCategory::where('category_id', $current_category->id)->get()->find($sub_category);
 
         return view('sub_category.sub_category_edit', [
-            'current_category_id' => $current_category->id,
+            'current_category_id' => $category->id,
             'sub_category' => $sub_category,
             'user' => $user,
         ]);
     }
 
-    public function update(CreateSubCategory $request, int $category, int $sub_category)
+    public function update(CreateSubCategory $request, Category $category, subCategory $sub_category)
     {
-        $current_category = Category::find($category);
-
-        $sub_category = SubCategory::where('category_id', $current_category->id)->get()->find($sub_category);
-
         $sub_category->sub_category_name = $request->sub_category_name;
 
-        $current_category->subCategories()->save($sub_category);
+        $category->subCategories()->save($sub_category);
 
         return redirect()->route('have_sub_category.index', [
-            'category' => $current_category->id,
+            'category' => $category->id,
         ]);
     }
 }
