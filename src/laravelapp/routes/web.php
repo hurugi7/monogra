@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::controller(HaveSubCategoryController::class)->group(function () {
         Route::group(['middleware' => 'can:view,category'], function() {
-            Route::get('/have/categories/{category}/sub_categories', 'index')->name('have_sub_category.index')->can('view', 'category');
+            Route::get('/have/categories/{category}/sub_categories', 'index')->name('have_sub_category.index');
             Route::get('/have/categories/{category}/sub_categories/create', 'create')->name('have_sub_category.create');
             Route::post('/have/categories/{category}/sub_categories/create', 'store')->name('have_sub_category.store');
         });

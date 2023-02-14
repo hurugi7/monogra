@@ -16,6 +16,8 @@ class HaveItemController extends Controller
 {
     public function index(Category $category, subCategory $sub_category)
     {
+        $this->checkRelation1($category, $sub_category);
+
         $user = Auth::user();
 
         $items = Item::where('sub_category_id', $sub_category->id)->get();
@@ -33,6 +35,8 @@ class HaveItemController extends Controller
 
     public function create(Category $category, subCategory $sub_category)
     {
+        $this->checkRelation1($category, $sub_category);
+
         $user = Auth::user();
 
         session(['checkPointURL' => url()->current()]);
@@ -46,6 +50,8 @@ class HaveItemController extends Controller
 
     public function store(CreateItem $request, Category $category, subCategory $sub_category)
     {
+        $this->checkRelation1($category, $sub_category);
+
         $item = new Item();
 
         $item->item_name = $request->item_name;
@@ -76,6 +82,8 @@ class HaveItemController extends Controller
 
     public function show(Category $category, subCategory $sub_category, Item $item)
     {
+        $this->checkRelation2($category, $sub_category, $item);
+
         $user = Auth::user();
 
         $photos = $item->photos()->get();
@@ -94,6 +102,8 @@ class HaveItemController extends Controller
 
     public function destroy(Category $category, subCategory $sub_category, Item $item)
     {
+        $this->checkRelation2($category, $sub_category, $item);
+
         $photos = $item->photos()->get();
 
         // 画像の削除処理
@@ -112,6 +122,8 @@ class HaveItemController extends Controller
 
     public function edit(Category $category, subCategory $sub_category, Item $item)
     {
+        $this->checkRelation2($category, $sub_category, $item);
+
         $user = Auth::user();
 
         $photos = $item->photos()->get();
@@ -129,6 +141,8 @@ class HaveItemController extends Controller
 
     public function update(CreateItem $request, Category $category, subCategory $sub_category, Item $item)
     {
+        $this->checkRelation2($category, $sub_category, $item);
+
         $photo_num = 0;
 
         if($item->photos()->exists()){
@@ -164,5 +178,19 @@ class HaveItemController extends Controller
             'sub_category' => $sub_category->id,
             'item' => $item->id,
         ]);
+    }
+
+    private function checkRelation1(Category $category, SubCategory $sub_category)
+    {
+        if ($category->id !== $sub_category->category_id ) {
+            abort(404);
+        }
+    }
+
+    private function checkRelation2(Category $category, SubCategory $sub_category, Item $item)
+    {
+        if ($category->id !== $sub_category->category_id || $sub_category->id !== $item->sub_category_id) {
+            abort(404);
+        }
     }
 }

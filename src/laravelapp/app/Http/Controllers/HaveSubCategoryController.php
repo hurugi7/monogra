@@ -57,6 +57,8 @@ class HaveSubCategoryController extends Controller
 
     public function destroy(Category $category, subCategory $sub_category)
     {
+        $this->checkRelation($category, $sub_category);
+
         $sub_category->delete();
 
         return redirect()->route('have_sub_category.index', [
@@ -66,6 +68,8 @@ class HaveSubCategoryController extends Controller
 
     public function edit(Category $category, subCategory $sub_category)
     {
+        $this->checkRelation($category, $sub_category);
+
         $user = Auth::user();
 
         session(['checkPointURL' => url()->current()]);
@@ -79,6 +83,8 @@ class HaveSubCategoryController extends Controller
 
     public function update(CreateSubCategory $request, Category $category, subCategory $sub_category)
     {
+        $this->checkRelation($category, $sub_category);
+
         $sub_category->sub_category_name = $request->sub_category_name;
 
         $category->subCategories()->save($sub_category);
@@ -86,5 +92,12 @@ class HaveSubCategoryController extends Controller
         return redirect()->route('have_sub_category.index', [
             'category' => $category->id,
         ]);
+    }
+
+    private function checkRelation(Category $category, SubCategory $sub_category)
+    {
+        if ($category->id !== $sub_category->category_id ) {
+            abort(404);
+        }
     }
 }

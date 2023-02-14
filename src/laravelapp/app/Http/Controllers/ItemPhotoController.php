@@ -14,6 +14,8 @@ class ItemPhotoController extends Controller
 {
     public function index(Category $category, subCategory $sub_category, Item $item)
     {
+        $this->checkRelation($category, $sub_category, $item);
+
         $user = Auth::user();
 
         $item_photos = ItemPhoto::where('item_id', $item->id)->get();
@@ -39,5 +41,12 @@ class ItemPhotoController extends Controller
             'sub_category' => $sub_category->id,
             'item' => $item->id,
         ]);
+    }
+
+    private function checkRelation(Category $category, SubCategory $sub_category, Item $item)
+    {
+        if ($category->id !== $sub_category->category_id || $sub_category->id !== $item->sub_category_id) {
+            abort(404);
+        }
     }
 }
