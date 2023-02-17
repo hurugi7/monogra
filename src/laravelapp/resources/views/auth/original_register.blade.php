@@ -114,7 +114,7 @@
 
               <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                 アカウントをお持ちの場合
-                <a href="{{ route('login') }}" class="text-gray-700 underline ml-2">ログイン</a>.
+                <a href="{{ route('login') }}" class="text-red-500 underline ml-2">ログイン</a>
               </p>
             </div>
           </form>
