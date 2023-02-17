@@ -53,29 +53,26 @@
       <div class="mt-2 border-t-2">
         <label for="name" class="block pt-4 pb-2 text-sm font-bold text-gray-900">ユーザー名</label>
         <div>
-          <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500">
+          <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500">
         </div>
       </div>
       <div class="text-right">
-        <button class="text-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+        <button class="text-right bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-3 rounded-md">
           編集する
         </button>
       </div>
     </form>
   </div>
   <script>
-    var cnt = 0; // アップロードカウント
-    var tmpId = 'tmp-' + cnt; // 一時保存用のID
-    //アップロードファイルの数だけプレビュー関数をループさせる
+    var cnt = 0;
+    var tmpId = 'tmp-' + cnt;
     function loop(event, id){
         for (let file of event.target.files)
         {
             imgPreView(file, id);
         }
-        // 一時保存用のIDを更新
         tmpId = 'tmp-' + ++cnt;
     }
-    //アップロードファイルのプレビューを表示
     function imgPreView(file, id){
         let preview = document.getElementById("preview-"+ id);
         let previewImages = document.getElementsByClassName(tmpId);
