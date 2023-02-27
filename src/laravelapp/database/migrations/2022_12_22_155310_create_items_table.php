@@ -16,12 +16,12 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('item_name', 60);
-            $table->integer('item_num');
-            $table->date('purchased_at');
-            $table->integer('price');
-            $table->string('purchased_in', 30);
-            $table->text('note');
-            $table->string('image_path', 255);
+            $table->integer('item_num')->nullable();
+            $table->date('purchased_at')->nullable();
+            $table->integer('price')->nullable();
+            $table->string('purchased_in', 30)->nullable();
+            $table->text('note')->nullable();
+            $table->string('image_path', 255)->nullable();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('sub_category_id')->constrained();
             $table->softDeletes();

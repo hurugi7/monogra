@@ -18,7 +18,7 @@ class RemoveDefaultValueFromPathColumnOnItemPhotosTable extends Migration
         });
 
         Schema::table('item_photos', function (Blueprint $table) {
-            $table->string('path')->nullable()->change();
+            $table->string('path')->nullable();
         });
     }
 
