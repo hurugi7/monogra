@@ -3,7 +3,7 @@
     <div class="w-full h-screen flex justify-center items-center backdrop-blur-sm my-auto">
       <div class="rounded-xl bg-white px-16 py-10 shadow-lg max-sm:px-8">
         <div>
-          <div class="mb-8 items-center">
+          <div class="mb-8 items-center text-center">
             <h1 class="mb-2 text-3xl">monogra</h1>
           </div>
 
