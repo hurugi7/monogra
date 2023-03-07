@@ -59,9 +59,9 @@
           @click="isOpen = false"
           >
           @if(!is_null($user->profile_img_path))
-          <img src="{{ asset('storage/' . $user->profile_img_path) }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
+          <img src="{{ $user->profile_img_path }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
           @else
-          <img src="{{ asset('storage/icon-of-a-person-7.jpg') }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
+          <img src="{{ Storage::disk('s3')->url('images/icon-of-a-person-7.jpg') }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
           @endif
           <div>{{ old('name')?: $user->name }}</div>
         </a>

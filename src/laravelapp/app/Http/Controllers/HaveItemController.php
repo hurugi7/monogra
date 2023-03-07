@@ -66,10 +66,9 @@ class HaveItemController extends Controller
 
         if($request->file('files')) {
             foreach($request->file('files') as $each_file) {
-                // 画像を保存して、そのパスを$pathに保存
-                $path = $each_file['photo']->store('', 'public');
-                // photosメソッドにより、商品に紐付けられた画像をDBに保存する
-                $item->photos()->create(['path' => $path]);
+                $path = Storage::disk('s3')->putFile('images', $each_file['photo'], 'public');
+                $url = Storage::disk('s3')->url($path);
+                $item->photos()->create(['path' => $url]);
             }
         }
 

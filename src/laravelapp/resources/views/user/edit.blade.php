@@ -25,9 +25,9 @@
           <div class="flex items-center">
             <div class="mt-2 sm:mt-0">
               @if(!is_null($user->profile_img_path))
-                <img src="{{ asset('storage/' . $user->profile_img_path) }}" alt="profile_img" class="w-24 h-24 object-cover rounded-full border-2">
+                <img src="{{ $user->profile_img_path }}" alt="profile_img" class="w-24 h-24 object-cover rounded-full border-2">
               @else
-                <img src="{{ asset('storage/icon-of-a-person-7.jpg') }}" alt="profile_img" class="w-24 h-24 object-cover rounded-full border-2">
+                <img src="{{ Storage::disk('s3')->url('images/icon-of-a-person-7.jpg') }}" alt="profile_img" class="w-24 h-24 object-cover rounded-full border-2">
               @endif
             </div>
             <div class="ml-2">

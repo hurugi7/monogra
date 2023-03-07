@@ -46,12 +46,12 @@
         <div class="responsive flex m-2 mb-5 w-full h-full">
           @if($current_item->photos()->where('item_id', $current_item->id)->exists())
             @foreach($photos as $photo)
-              <img src="{{ asset('storage/' . $photo->path) }}" class="w-48 h-48 object-cover rounded-lg">
+              <img src="{{ $photo->path }}" class="w-48 h-48 object-cover rounded-lg">
             @endforeach
           @else
             <div class="basis-full">
               <div class="relative overflow-hidden pt-60% my-2.5 mx-1">
-                <img src="{{ asset('storage/20200505_noimage.png') }}" alt="" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover">
+                <img src="{{ Storage::disk('s3')->url('images/20200505_noimage.png') }}" alt="" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover">
               </div>
             </div>
           @endif

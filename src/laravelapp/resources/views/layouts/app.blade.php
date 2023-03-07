@@ -17,6 +17,8 @@
 
     </head>
     <body>
-        {{ $slot }}
+        <div class="container font-note text-gray-900 antialiased w-full">
+            {{ $slot }}
+        </div>
     </body>
 </html>
