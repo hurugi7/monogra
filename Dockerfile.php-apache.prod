@@ -1,0 +1,43 @@
+FROM amazonlinux:2
+
+# 必要なパッケージをインストール
+RUN amazon-linux-extras install php7.4 \
+    && yum install -y httpd \
+    && yum install -y php-cli php-mysqlnd php-xml php-gd php-mbstring php-json \
+    && yum clean all \
+    && rm -rf /var/cache/yum
+
+# php-fpmをインストール
+RUN amazon-linux-extras install epel -y
+RUN yum install -y php-fpm
+
+COPY src/laravelapp /var/www/html
+
+COPY .env.production /var/www/html/src/laravelapp/.env
+
+#Composerをインストールし、各種パッケージをインストール
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
+    && php -r "unlink('composer-setup.php');" \
+    && cd /var/www/html \
+    && composer install --no-dev --no-scripts --no-progress --prefer-dist --optimize-autoloader
+
+RUN comopser require aws/aws-sdk-php
+
+# ファイルのパーミッションを変更
+RUN chown -R apache:apache /var/www/html/storage /var/www/html/bootstrap/cache
+
+COPY docker/app/000-default.conf /etc/httpd/conf/httpd.conf
+
+COPY docker/app/php.ini /etc/php.ini
+
+#php-fpmの設定ファイルをコピーした後、エントリポイントスクリプトを実行
+COPY docker/app/laravel-fpm.conf /etc/php-fpm.d/www.conf
+COPY docker/app/entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
+EXPOSE 80
