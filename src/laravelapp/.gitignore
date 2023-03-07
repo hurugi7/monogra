@@ -20,3 +20,5 @@ package-lock.json
 package.json
 /public/item
 tailwind.cofig.js
+composer.json
+composer.lock
