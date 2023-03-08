@@ -17,7 +17,7 @@
             @foreach($item_photos as $item_photo)
               <div class="basis-full">
                 <div class="group relative h-64 flex justify-end items-end bg-gray-100 overflow-hidden rounded-lg shadow-lg">
-                    <img src="{{ $item_photo->path }}" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition duration-200">
+                    <img src="{{ Storage::disk('s3')->url($item_photo->path) }}" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition duration-200">
                     <div x-data="{ open: false }">
                       <div class="hidden group-hover:block">
                         <button type="submit" class="inline-block text-gray-200 text-xs md:text-sm border border-gray-500 rounded-lg backdrop-blur hover:bg-gray-800 relative px-2 md:px-3 py-1 mr-3 mb-3" @click="open = true">

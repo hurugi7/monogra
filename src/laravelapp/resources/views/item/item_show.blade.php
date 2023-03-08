@@ -27,7 +27,7 @@
         <div class="responsive flex m-2 mb-5 w-full h-full">
           @if($current_item->photos()->where('item_id', $current_item->id)->exists())
             @foreach($photos as $photo)
-              <img src="{{ $photo->path }}" class="w-48 h-48 object-cover rounded-lg">
+              <img src="{{ Storage::disk('s3')->url($photo->path) }}" class="w-48 h-48 object-cover rounded-lg">
             @endforeach
           @else
             <img src="{{ Storage::disk('s3')->url('images/20200505_noimage.png') }}" alt="" class="w-full h-full object-cover">

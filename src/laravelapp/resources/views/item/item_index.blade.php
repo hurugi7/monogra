@@ -17,7 +17,7 @@
         <a href="{{ route('have_item.show', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $item->id]) }}" class="block basis-11/12 px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
           <div class="flex items-center">
             @if($item->photos()->where('item_id', $item->id)->exists())
-              <img src="{{ $item->photos()->first()->path }}" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
+              <img src="{{ Storage::disk('s3')->url($item->photos()->first()->path) }}" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
             @else
               <img src="{{ Storage::disk('s3')->url('images/20200505_noimage.png') }}" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
             @endif
