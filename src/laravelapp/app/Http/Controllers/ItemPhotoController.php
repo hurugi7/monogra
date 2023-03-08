@@ -33,7 +33,7 @@ class ItemPhotoController extends Controller
 
     public function destroy(Category $category, subCategory $sub_category, Item $item, ItemPhoto $item_photo)
     {
-        Storage::disk('public')->delete($item_photo->path);
+        Storage::disk('s3')->delete($item_photo->path);
         $item_photo->delete();
 
         return redirect()->route('item_photo.index', [

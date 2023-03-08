@@ -67,8 +67,7 @@ class HaveItemController extends Controller
         if($request->file('files')) {
             foreach($request->file('files') as $each_file) {
                 $path = Storage::disk('s3')->putFile('images', $each_file['photo'], 'public');
-                $url = Storage::disk('s3')->url($path);
-                $item->photos()->create(['path' => $url]);
+                $item->photos()->create(['path' => $path]);
             }
         }
 
@@ -107,7 +106,7 @@ class HaveItemController extends Controller
 
         // 画像の削除処理
         foreach($photos as $photo) {
-            Storage::disk('public')->delete($photo->path);
+            Storage::disk('s3')->delete($photo->path);
             $photo->delete();
         }
 
@@ -155,7 +154,7 @@ class HaveItemController extends Controller
         // 画像の合計が５枚以下の場合
         if($request->file('files') && ($photo_num + $upload_photo_num) < 6) {
             foreach($request->file('files') as $each_file) {
-                $path = $each_file['photo']->store('', 'public');
+                $path = Storage::disk('s3')->putFile('images', $each_file['photo'], 'public');
                 $item->photos()->create(['path' => $path]);
             }
         // 画像の合計が５枚より多い場合
