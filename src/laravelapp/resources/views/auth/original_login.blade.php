@@ -1,5 +1,5 @@
 <x-app-layout>
-  <div class="flex h-screen w-full items-center justify-center bg-gray-900 bg-cover bg-no-repeat" style="background-image:url({{ asset('storage/23462211.jpg') }})">
+  <div class="flex h-screen w-full items-center justify-center bg-gray-900 bg-cover bg-no-repeat" style="background-image:url({{ Storage::disk('s3')->url('images/23462211.jpg') }})">
     <div class="w-full h-screen flex justify-center items-center backdrop-blur-sm my-auto">
       <div class="rounded-xl bg-white px-16 py-10 shadow-lg max-sm:px-8">
         <div>

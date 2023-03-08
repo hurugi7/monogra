@@ -6,7 +6,7 @@
       >
         <img
           alt="Night"
-          src="{{ asset('storage/23462211.jpg') }}"
+          src="{{ Storage::disk('s3')->url('images/23462211.jpg') }}"
           class="absolute inset-0 h-full w-full object-cover"
         />
 
