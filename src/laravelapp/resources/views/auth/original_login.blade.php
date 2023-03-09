@@ -9,7 +9,7 @@
 
           <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-          <form action="{{ route('login') }}" method="post">
+          <form id="login-form" action="{{ route('login') }}" method="post">
             @csrf
             <div class="mb-4 text-lg">
               <label for="email" class="block text-sm font-base text-gray-700">
@@ -24,7 +24,14 @@
               <input class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" type="Password" name="password"/>
             </div>
             <div class="mt-8 flex flex-col justify-center items-center text-lg text-black">
-              <button type="submit" class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">ログイン</button>
+              <div class="flex">
+                <button type="submit" name="submit-type" value="login" class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-8 py-3 mr-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                  ログイン
+                </button>
+                <button type="submit" name="submit-type" value="guest" class="inline-block shrink-0 rounded-md border border-green-600 bg-green-600 px-4 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-green-600 focus:outline-none focus:ring active:text-blue-500">
+                  ゲストログイン
+                </button>
+              </div>
               <div class="mt-2">
                 <a class="hover:underline text-sm text-blue-300 hover:text-blue-600" href="{{ route('password.request') }}">
                   パスワードを忘れた場合
@@ -40,4 +47,14 @@
       </div>
     </div>
   </div>
+  <script>
+    var loginForm = document.getElementById('login-form');
+
+    loginForm.addEventListener('submit', function(event) {
+      var submitType = event.submitter.value;
+      if (submitType === 'guest') {
+          loginForm.setAttribute('action', "{{ route('guestLogin') }}");
+      }
+});
+  </script>
 </x-app-layout>

@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -32,6 +33,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function guestLogin()
+    {
+        $guestUserId = 2;
+        $user = User::find($guestUserId);
+        Auth::login($user);
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

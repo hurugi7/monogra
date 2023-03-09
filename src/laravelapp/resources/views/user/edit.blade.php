@@ -7,6 +7,7 @@
       <div class="text-xl">アカウント</div>
     </div>
   </div>
+
   @if($errors->any())
     <div class="mx-8 my-3 p-3 bg-red-200 rounded">
       <ul>
@@ -16,6 +17,12 @@
       </ul>
     </div>
   @endif
+  @if (session('guest'))
+    <div class="alert alert-danger">
+        {{ session('guest') }}
+    </div>
+  @endif
+
   <div class="mx-4">
     <form method="post" action="{{ route('user.update') }}" enctype="multipart/form-data">
       @csrf
@@ -35,13 +42,15 @@
               <div>{{ $user->email }}</div>
             </div>
           </div>
-          <div class="sm:ml-8 w-28">
-            <label class="block text-center py-2 rounded bg-green-600 hover:bg-green-700 text-white text-sm cursor-pointer mt-2 sm:mt-0">
-              <i class="fa-solid fa-plus"></i>
-              画像を選択
-              <input type="file" name="user_profile_img" class="hidden" onchange="loop(event, 'item1')">
-            </label>
-          </div>
+          @if(Auth::id() !== 2)
+            <div class="sm:ml-8 w-28">
+              <label class="block text-center py-2 rounded bg-green-600 hover:bg-green-700 text-white text-sm cursor-pointer mt-2 sm:mt-0">
+                <i class="fa-solid fa-plus"></i>
+                画像を選択
+                <input type="file" name="user_profile_img" class="hidden" onchange="loop(event, 'item1')">
+              </label>
+            </div>
+          @endif
         </div>
         <div class="preview-img items-center text-center border-l-2 pl-3 mt-2">
           <div class="my-1 pt-1 pb-1 text-xs  text-white bg-amber-300 rounded">
@@ -53,7 +62,11 @@
       <div class="mt-2 border-t-2">
         <label for="name" class="block pt-4 pb-2 text-sm font-bold text-gray-900">ユーザー名</label>
         <div>
-          <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500">
+          @if(Auth::id() !== 2)
+            <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500">
+          @else
+            <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" readonly>
+          @endif
         </div>
       </div>
       <div class="text-right">

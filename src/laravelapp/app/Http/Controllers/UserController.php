@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    private const GUEST_USER_ID = 2;
+
     public function edit() {
         $user = Auth::user();
 
@@ -20,6 +22,10 @@ class UserController extends Controller
     public function update(EditUser $request)
     {
         $user = Auth::user();
+
+        if($user->id == self::GUEST_USER_ID) {
+            return redirect()->back()->withErrors(['guest' => 'ゲストユーザーのため、プロフィール編集はできません。']);
+        }
 
         $user->name = $request->name;
 

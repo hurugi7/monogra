@@ -13,6 +13,8 @@ class HomeController extends Controller
 
         $category = $user->categories()->first();
 
+        session(['checkPointURL' => url()->current()]);
+
         if(is_null($category)) {
             return view('home', [
                 'user' => $user,
