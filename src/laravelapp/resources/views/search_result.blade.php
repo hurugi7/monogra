@@ -19,7 +19,7 @@
                 <div class="flex justify-between items-center">
                   <div class="flex items-center">
                     @if($item->photos()->where('item_id', $item->id)->exists())
-                      <img src="{{ $item->photos()->first()->path }}" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
+                      <img src="{{ Storage::disk('s3')->url($item->photos()->first()->path) }}" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
                     @else
                       <img src="{{ Storage::disk('s3')->url('images/20200505_noimage.png') }}" alt="" class="w-16 h-16 object-cover rounded-md border-2 mr-5">
                     @endif
