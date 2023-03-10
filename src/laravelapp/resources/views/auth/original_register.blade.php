@@ -37,7 +37,7 @@
               monograで持ち物を管理して、自分が何を持っているか把握しませんか？
             </p>
           </div>
-
+          <x-auth-session-status class="mb-4" :status="session('status')" />
           <x-auth-validation-errors :errors="$errors" />
 
           <form action="{{ route('register') }}" class="mt-8 grid grid-cols-6 gap-6" method="POST">
