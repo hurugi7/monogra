@@ -11,7 +11,7 @@ RUN amazon-linux-extras install php7.4 \
 RUN amazon-linux-extras install epel -y
 RUN yum install -y php-fpm
 
-RUN yum install -y mysql-client
+RUN yum install -y mysql
 
 COPY src/laravelapp /var/www/html
 
