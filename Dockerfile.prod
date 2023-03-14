@@ -1,0 +1,31 @@
+FROM php:7.4-apache
+
+COPY docker/app/php.ini /usr/local/etc/php/
+COPY docker/app/000-default.conf /etc/apache2/sites-enabled/
+COPY src/ /var/www/html
+COPY .env.production /var/www/html/laravelapp/.env
+
+RUN apt-get update \
+&& apt-get install -y \
+git \
+zip \
+unzip \
+vim \
+libpng-dev \
+libpq-dev \
+default-mysql-client \
+&& docker-php-ext-install pdo_mysql
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN chown -R www-data:www-data /var/www/html/laravelapp/storage /var/www/html/laravelapp/bootstrap/cache
+
+RUN mv /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
+RUN /bin/sh -c a2enmod rewrite
+
+COPY docker/app/entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod -R +x /usr/sbin/
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+EXPOSE 80
