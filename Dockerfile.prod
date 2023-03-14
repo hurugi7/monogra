@@ -3,7 +3,6 @@ FROM php:7.4-apache
 COPY docker/app/php.ini /usr/local/etc/php/
 COPY docker/app/000-default.conf /etc/apache2/sites-enabled/
 COPY src/ /var/www/html
-COPY .env.production /var/www/html/laravelapp/.env
 
 RUN apt-get update \
 && apt-get install -y \
