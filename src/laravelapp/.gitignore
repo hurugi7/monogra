@@ -19,6 +19,9 @@ yarn-error.log
 package-lock.json
 package.json
 /public/item
-tailwind.cofig.js
+tailwind.config.js
 composer.json
 composer.lock
+postcss.config.js
+vite.config.js
+webpack.mix.js
