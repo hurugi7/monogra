@@ -13,15 +13,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-/public/css/app.css
-/public/js/app.js
-/public/mix-manifest.json
-package-lock.json
-package.json
 /public/item
-tailwind.config.js
-composer.json
-composer.lock
-postcss.config.js
-vite.config.js
-webpack.mix.js
