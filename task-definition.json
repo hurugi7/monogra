@@ -1,5 +1,5 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:826449206730:task-definition/monogra-prod-task:22",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:826449206730:task-definition/monogra-prod-task:24",
   "containerDefinitions": [
       {
           "name": "php-apache",
@@ -16,7 +16,12 @@
           ],
           "essential": true,
           "environment": [],
-          "environmentFiles": [],
+          "environmentFiles": [
+              {
+                  "value": "arn:aws:s3:::laravel-env-variable/laravel-prod.env",
+                  "type": "s3"
+              }
+          ],
           "mountPoints": [],
           "volumesFrom": [],
           "logConfiguration": {
@@ -34,7 +39,7 @@
   "taskRoleArn": "arn:aws:iam::826449206730:role/monogra-role",
   "executionRoleArn": "arn:aws:iam::826449206730:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
-  "revision": 22,
+  "revision": 24,
   "volumes": [],
   "status": "ACTIVE",
   "requiresAttributes": [
@@ -49,6 +54,9 @@
       },
       {
           "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+      },
+      {
+          "name": "ecs.capability.env-files.s3"
       },
       {
           "name": "com.amazonaws.ecs.capability.task-iam-role"
@@ -80,7 +88,7 @@
       "cpuArchitecture": "X86_64",
       "operatingSystemFamily": "LINUX"
   },
-  "registeredAt": "2023-03-13T18:20:16.075Z",
+  "registeredAt": "2023-03-14T16:27:42.710Z",
   "registeredBy": "arn:aws:iam::826449206730:user/hurugi7",
   "tags": []
 }
