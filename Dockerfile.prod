@@ -15,7 +15,7 @@ libpq-dev \
 default-mysql-client \
 && docker-php-ext-install pdo_mysql
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/compose
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN cd /var/www/html/laravelapp && composer install
 
