@@ -15,9 +15,9 @@ libpq-dev \
 default-mysql-client \
 && docker-php-ext-install pdo_mysql
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/compose
 
-RUN composer install
+RUN cd laravelapp/ && composer install
 
 RUN chown -R www-data:www-data /var/www/html/laravelapp/storage /var/www/html/laravelapp/bootstrap/cache
 
