@@ -17,6 +17,8 @@ default-mysql-client \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/compose
 
+RUN cd /var/www/html/laravelapp && composer install
+
 RUN chown -R www-data:www-data /var/www/html/laravelapp/storage /var/www/html/laravelapp/bootstrap/cache
 
 RUN mv /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
