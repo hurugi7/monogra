@@ -1,6 +1,6 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="h-full w-full" style="background-image:url({{ asset('storage/23462211.jpg') }})">
+  <div class="h-full w-full" style="background-image:url({{ Storage::disk('s3')->url('images/23462211.jpg') }})">
     <div class="w-full h-full backdrop-blur flex flex-col items-center justify-center py-48">
       <h2 class="mt-6 text-xl font-bold sm:text-2xl md:text-3xl">
         <span class="text-3xl sm:text-4xl md:text-5xl">monogra</span>へようこそ！

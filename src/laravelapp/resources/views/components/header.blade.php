@@ -1,4 +1,4 @@
-<nav class="p-3 flex flex-wrap items-center bg-gray-300 justify-between w-full z-10" x-data="{ isOpen: false }" @keydown.escape="isOpen = false" :class="{ 'shadow-lg bg-indigo-400' : isOpen , 'bg-gray-400' : !isOpen}">
+<nav class="p-3 flex flex-wrap items-center bg-gray-300 justify-between w-full z-10" x-data="{ isOpen: false }" @keydown.escape="isOpen = false" :class="{ 'shadow-lg bg-amber-300' : isOpen , 'bg-gray-400' : !isOpen}">
   <!-- タイトル -->
   <div class="items-center shrink-0 text-black">
     <span class="font-semibold text-lg">monogra</span>
