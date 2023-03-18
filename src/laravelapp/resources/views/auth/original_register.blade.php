@@ -1,5 +1,5 @@
 <x-app-layout>
-  <section class="bg-white">
+  <section class="bg-[#fffde5]">
     <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
       <section
         class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6"
@@ -12,11 +12,11 @@
 
         <div class="hidden lg:relative lg:block lg:px-12 lg:pb-20">
           <h2 class="mt-6 text-2xl font-bold sm:text-3xl md:text-4xl">
-            <span class="text-5xl">monogra</span>へようこそ！
+            <span class="text-5xl text-[#d77f5e]">monogra</span>へようこそ！
           </h2>
 
           <p class="mt-4 leading-relaxed sm:text-lg md:text-xl">
-            monograで持ち物を管理して、自分が何を持っているか把握しませんか？
+            <span class="text-[#d77f5e]">monogra</span>で持ち物を管理して、自分が何を持っているか把握しませんか？
           </p>
         </div>
       </section>
@@ -30,11 +30,11 @@
             <h1
               class="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
             >
-              <span class="text-4xl">monogra</span>へようこそ！
+              <span class="text-4xl text-[#d77f5e]">monogra</span>へようこそ！
             </h1>
 
             <p class="mt-4 leading-relaxed">
-              monograで持ち物を管理して、自分が何を持っているか把握しませんか？
+              <span class="text-[#d77f5e]">monogra</span>で持ち物を管理して、自分が何を持っているか把握しませんか？
             </p>
           </div>
           <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -54,7 +54,7 @@
                 type="text"
                 id="name"
                 name="name"
-                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
                 value="{{ old('name') }}"
               />
             </div>
@@ -68,7 +68,7 @@
                 type="email"
                 id="email"
                 name="email"
-                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
                 value="{{ old('email') }}"
               />
             </div>
@@ -85,7 +85,7 @@
                 type="password"
                 id="password"
                 name="password"
-                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
               />
             </div>
 
@@ -101,20 +101,20 @@
                 type="password"
                 id="password_confirmation"
                 name="password_confirmation"
-                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
               />
             </div>
 
             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
               <button
-                class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+                class="inline-block shrink-0 rounded-md border border-[#6c9cd2] bg-[#6c9cd2] px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-[#6c9cd2] focus:outline-none focus:ring active:text-[#6c9cd2]"
               >
                 アカウントを作成
               </button>
 
               <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                 アカウントをお持ちの場合
-                <a href="{{ route('login') }}" class="text-red-500 underline ml-2">ログイン</a>
+                <a href="{{ route('login') }}" class="text-[#c46759] underline ml-2">ログイン</a>
               </p>
             </div>
           </form>

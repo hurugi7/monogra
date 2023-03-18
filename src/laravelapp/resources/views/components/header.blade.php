@@ -1,14 +1,14 @@
-<nav class="p-3 flex flex-wrap items-center bg-gray-300 justify-between w-full z-10" x-data="{ isOpen: false }" @keydown.escape="isOpen = false" :class="{ 'shadow-lg bg-amber-300' : isOpen , 'bg-gray-400' : !isOpen}">
+<nav class="p-3 flex flex-wrap items-center bg-[#eae5e3] justify-between w-full z-10" x-data="{ isOpen: false }" @keydown.escape="isOpen = false" :class="{ 'shadow-lg bg-[#eae5e3]' : isOpen , 'bg-[#eae5e3]' : !isOpen}">
   <!-- タイトル -->
   <div class="items-center shrink-0 text-black">
-    <span class="font-semibold text-lg">monogra</span>
+    <span class="font-semibold text-lg text-[#d77f5e]">monogra</span>
   </div>
   <!-- 検索バー -->
   <form action="{{ route('search') }}" method="get" class="hidden sm:flex">
     <div class="xl:w-96">
       <div class="input-group relative flex items-stretch w-full">
-        <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="アイテムを検索" aria-label="Search" aria-describedby="button-addon2" name="search">
-        <button class="btn inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="submit" id="button-addon2">
+        <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#6c9cd2] focus:outline-none" placeholder="アイテムを検索" aria-label="Search" aria-describedby="button-addon2" name="search">
+        <button class="btn inline-block px-6 py-2.5 bg-[#4185d1] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#6c9cd2] hover:shadow-lg focus:bg-[#6c9cd2]  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#6c9cd2] active:shadow-lg transition duration-150 ease-in-out  items-center" type="submit" id="button-addon2">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
           </svg>
@@ -20,7 +20,7 @@
   <button
         @click="isOpen = !isOpen"
         type="button"
-        class="block px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white"
+        class="block px-2 text-gray-500 hover:text-[#fcfcf2] focus:outline-none focus:text-[#fcfcf2]"
         :class="{ 'transition transform-180': isOpen }"
       >
         <svg
@@ -54,7 +54,7 @@
     >
       <li class="mr-3">
         <a
-          class="inline-block py-2 px-4 text-white no-underline text-center"
+          class="inline-block py-2 px-4 no-underline text-center"
           href="{{ route('user.edit') }}"
           @click="isOpen = false"
           >
@@ -63,12 +63,12 @@
           @else
           <img src="{{ Storage::disk('s3')->url('images/icon-of-a-person-7.jpg') }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
           @endif
-          <div>{{ old('name')?: $user->name }}</div>
+          <div class="font-bold">{{ old('name')?: $user->name }}</div>
         </a>
       </li>
       <li class="mr-3">
         <a
-          class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+          class="inline-block text-gray-600 no-underline hover:text-[#fcfcf2] hover:text-underline py-2 px-4"
           href="{{ route('logout') }}"
           @click="isOpen = false"
           >ログアウト
@@ -81,8 +81,8 @@
 <form action="{{ route('search') }}" method="get" class="m-2 sm:hidden">
     <div class="mx-2">
       <div class="input-group relative flex items-stretch w-full">
-        <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="アイテムを検索" aria-label="Search" aria-describedby="button-addon2" name="search">
-        <button class="btn inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="submit" id="button-addon2">
+        <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#6c9cd2] focus:outline-none" placeholder="アイテムを検索" aria-label="Search" aria-describedby="button-addon2" name="search">
+        <button class="btn inline-block px-6 py-2.5 bg-[#4185d1] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#6c9cd2] hover:shadow-lg focus:bg-[#6c9cd2]  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#6c9cd2] active:shadow-lg transition duration-150 ease-in-out flex items-center" type="submit" id="button-addon2">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
           </svg>

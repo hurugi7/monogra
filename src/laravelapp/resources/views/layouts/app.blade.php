@@ -7,7 +7,9 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
+
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -16,7 +18,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
 
     </head>
-    <body>
+    <body class="text-gray-800">
         {{ $slot }}
     </body>
 </html>

@@ -1,11 +1,11 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm">
+  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm bg-[#fcfcf2]">
     <div class="flex items-center border-solid border-gray-300 border-b">
       <a href="{{ route('have_item.show' ,['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $current_item->id]) }}" class="ml-2 mr-6">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
       </a>
-      <div class="py-3">アイテム編集</div>
+      <div class="py-3 font-bold">アイテム編集</div>
     </div>
     @if($errors->any())
       <div class="mx-8 my-3 p-3 bg-red-200 rounded">
@@ -20,20 +20,20 @@
       @csrf
       @method('put')
       <div>
-        <label for="item_name" class="block text-xs sm:text-sm text-gray-900 mb-1">
+        <label for="item_name" class="block text-sm sm:text-base text-gray-900 mb-1">
           アイテム名
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" name="item_name" id="item_name" value="{{ old('item_name')?: $current_item->item_name }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-base focus:ring-[#4185d1] focus:border-[#4185d1]" name="item_name" id="item_name" value="{{ old('item_name')?: $current_item->item_name }}">
       </div>
       <div class="mb-5">
         <div class="flex justify-between items-center">
-          <label for="image_path" class="block text-xs sm:text-sm text-gray-900 mb-1">
+          <label for="image_path" class="block text-sm sm:text-base text-gray-900 mb-1">
             アイテム写真（{{ $current_item->photos()->count() }}/5）
           </label>
           <!-- 画像の編集ボタン -->
           @if($current_item->photos()->exists())
             <a href="{{ route('item_photo.index', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $current_item->id]) }}" class="inline-block">
-              <i class="fa-regular fa-pen-to-square bg-blue-500 hover:bg-blue-700 text-white text-xs sm:text-sm py-2 px-2 rounded-lg"></i>
+              <i class="fa-regular fa-pen-to-square bg-[#4185d1] hover:bg-blue-700 text-white text-xs sm:text-sm py-2 px-2 rounded-lg"></i>
             </a>
           @endif
         </div>
@@ -58,7 +58,7 @@
         </div>
         @if ($current_item->photos()->count() !== 5)
         <div id="box">
-          <label class="py-2 px-2 rounded bg-green-600 hover:bg-green-700 text-white text-sm cursor-pointer">
+          <label class="py-2 px-2 rounded bg-[#61c1be] hover:bg-[#74e3df] text-white text-sm cursor-pointer">
             <i class="fa-solid fa-plus"></i>
             写真を追加
             <input type="file" name="files[][photo]" onchange="loop(event, 'item1')" multiple class="hidden">
@@ -69,40 +69,40 @@
         @endif
       </div>
       <div>
-        <label for="price" class="block text-xs sm:text-sm text-gray-900 mb-1">
+        <label for="price" class="block text-sm sm:text-base text-gray-900 mb-1">
           値段
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" name="price" id="price" value="{{ old('price')?: $current_item->price}}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] focus:ring-[#4185d1] focus:border-[#4185d1]" name="price" id="price" value="{{ old('price')?: $current_item->price}}">
       </div>
       <div>
-        <label for="item_num" class="block text-xs sm:text-sm text-gray-900 mb-1">
+        <label for="item_num" class="block text-sm sm:text-base text-gray-900 mb-1">
           個数
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" name="item_num" id="item_num" value="{{ old('item_num')?: $current_item->item_num }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] focus:ring-[#4185d1] focus:border-[#4185d1]" name="item_num" id="item_num" value="{{ old('item_num')?: $current_item->item_num }}">
       </div>
       <div>
-        <label for="purchased_at" class="block text-xs sm:text-sm text-gray-900 mb-1">
+        <label for="purchased_at" class="block text-sm sm:text-base text-gray-900 mb-1">
           購入日
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" name="purchased_at" id="purchased_at" value="{{ old('purchased_at')?: $current_item->purchased_at }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] focus:ring-[#4185d1] focus:border-[#4185d1]" name="purchased_at" id="purchased_at" value="{{ old('purchased_at')?: $current_item->purchased_at }}">
       </div>
       <div>
-        <label for="purchased_in" class="block text-xs sm:text-sm text-gray-900 mb-1">
+        <label for="purchased_in" class="block text-sm sm:text-base text-gray-900 mb-1">
           購入場所
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" name="purchased_in" id="purchased_in" value="{{ old('purchased_in')?: $current_item->purchased_in }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] focus:ring-[#4185d1] focus:border-[#4185d1]" name="purchased_in" id="purchased_in" value="{{ old('purchased_in')?: $current_item->purchased_in }}">
       </div>
       <div>
-        <label for="note" class="block text-xs sm:text-sm text-gray-900 mb-1">
+        <label for="note" class="block text-sm sm:text-base text-gray-900 mb-1">
           ノート
         </label>
-        <textarea class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" name="note" id="note">
+        <textarea class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] focus:ring-[#4185d1] focus:border-[#4185d1]" name="note" id="note">
           {{ old('note')?: $current_item->note }}
         </textarea>
       </div>
       <div class="text-right">
         <a href="{{ route('have_item.update' ,['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $current_item->id]) }}">
-          <button class="text-right bg-blue-500 hover:bg-blue-700 text-white text-xs sm:text-sm py-2 px-4 rounded-lg">
+          <button class="text-right bg-[#4185d1] hover:bg-[#6c9cd2] text-white text-xs sm:text-sm py-2 px-4 rounded-lg">
             編集する
           </button>
         </a>

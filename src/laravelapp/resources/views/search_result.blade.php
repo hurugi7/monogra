@@ -1,15 +1,15 @@
 <x-guest-layout>
 <x-header :user="$user"/>
   <div class="mt-4">
-    <div class="m-3 flex items-center">
+    <div class="flex items-center mt-8 p-2 sm:p-4 font-bold bg-[#faf3d4]">
       <div class="mr-5">
         <a href="{{ session('checkPointURL') }}">
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </a>
       </div>
-      <div class="text-xs sm:text-sm">検索結果一覧</div>
+      <div class="text-sm sm:text-base">検索結果一覧</div>
     </div>
-    <div class="ml-2 text-sm sm:text-base">「{{ $search }}」の検索結果</div>
+    <div class="mt-4 ml-2 text-sm sm:text-base">「{{ $search }}」の検索結果</div>
     <div class="ml-2">
       <div class="mt-2">
         @if(count($items) >= 1)
