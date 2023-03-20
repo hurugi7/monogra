@@ -9,6 +9,12 @@
         </a>
       </div>
     </div>
+    @if(is_null($categories->first()))
+      <div class="text-2xl sm:text-3xl text-center py-32 text-gray-600 font-bold">
+        <div class="mb-4">登録されたカテゴリはありません</div>
+        <div class="text-base sm:text-lg font-normal">右上の登録ボタンからカテゴリを登録しましょう！</div>
+      </div>
+    @endif
     @foreach($categories as $category)
       <div class="flex hover:bg-[#eaeef1]">
         <a href="{{ route('have_sub_category.index', ['category' => $category->id]) }}" class="block basis-11/12 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">

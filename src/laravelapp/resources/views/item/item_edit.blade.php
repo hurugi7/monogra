@@ -33,7 +33,7 @@
           <!-- 画像の編集ボタン -->
           @if($current_item->photos()->exists())
             <a href="{{ route('item_photo.index', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $current_item->id]) }}" class="inline-block">
-              <i class="fa-regular fa-pen-to-square bg-[#4185d1] hover:bg-blue-700 text-white text-xs sm:text-sm py-2 px-2 rounded-lg"></i>
+              <i class="fa-regular fa-pen-to-square bg-[#4185d1] hover:bg-[#6c9cd2] text-white text-xs sm:text-sm py-2 px-2 rounded-lg"></i>
             </a>
           @endif
         </div>

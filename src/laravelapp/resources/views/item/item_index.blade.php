@@ -13,10 +13,16 @@
       </div>
     </div>
     <div class="p-4 text-xs font-bold">
-      {{ $current_category->category_name }}
+      <a href="{{ route('have_category.index') }}" class="hover:text-gray-400">{{ $current_category->category_name }}</a>
       <i class="fa-solid fa-angle-right"></i>
-      {{ $current_sub_category->sub_category_name }}
+      <a href="{{ route('have_sub_category.index', ['category' => $current_category_id]) }}" class="hover:text-gray-400">{{ $current_sub_category->sub_category_name }}</a>
     </div>
+    @if(is_null($items->first()))
+      <div class="text-2xl sm:text-3xl text-center py-32 text-gray-600 font-bold">
+        <div class="mb-4">登録されたアイテムはありません</div>
+        <div class="text-base sm:text-lg font-normal">右上の登録ボタンからアイテムを登録しましょう！</div>
+      </div>
+    @endif
     @foreach($items as $item)
       <div class="flex hover:bg-[#eaeef1] items-center">
         <a href="{{ route('have_item.show', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $item->id]) }}" class="block basis-11/12 px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">

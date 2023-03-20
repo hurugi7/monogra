@@ -52,7 +52,7 @@
     <ul
       class="pt-6 list-reset justify-end flex-1 items-center"
     >
-      <li class="mr-3">
+      <li class="mr-3 items-center">
         <a
           class="inline-block py-2 px-4 no-underline text-center"
           href="{{ route('user.edit') }}"
@@ -63,10 +63,10 @@
           @else
           <img src="{{ Storage::disk('s3')->url('images/icon-of-a-person-7.jpg') }}" alt="user_profile_img" class="w-16 h-16 object-cover rounded-full border-2">
           @endif
-          <div class="font-bold">{{ old('name')?: $user->name }}</div>
+          <div class="font-bold mt-1">{{ old('name')?: $user->name }}</div>
         </a>
       </li>
-      <li class="mr-3">
+      <li class="mr-3 items-center">
         <a
           class="inline-block text-gray-600 no-underline hover:text-[#fcfcf2] hover:text-underline py-2 px-4"
           href="{{ route('logout') }}"
