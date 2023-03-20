@@ -1,19 +1,30 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="bg-white items-center mx-auto">
-    <div class="flex items-center justify-between">
+  <div class="items-center mx-auto">
+    <div class="mt-8 flex items-center justify-between bg-[#faf3d4]">
       <div class="flex items-center">
         <a href="{{ route('have_sub_category.index', ['category' => $current_category_id]) }}" class="py-3 ml-3 mr-6">
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </a>
-        <div class="text-xs sm:text-sm p-2 sm:p-4">アイテム一覧</div>
+        <div class="text-sm sm:text-base font-bold p-2 sm:p-4">アイテム一覧</div>
       </div>
       <div class="p-2 sm:p-4">
-        <a href="{{ route('have_item.create', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id]) }}" class="shadow-lg px-2 py-1  bg-yellow-300 text-white text-xs sm:text-sm rounded  hover:bg-yellow-400 hover:shadow-sm hover:translate-y-0.5 transform transition">アイテム追加</a>
+        <a href="{{ route('have_item.create', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id]) }}" class="font-semibold shadow-lg px-2 py-1  bg-[#d77f5e] text-[#fcfcf2] text-xs sm:text-sm rounded  hover:bg-[#ff9770] hover:translate-y-0.5 transform transition">アイテム追加</a>
       </div>
     </div>
+    <div class="p-4 text-xs font-bold">
+      <a href="{{ route('have_category.index') }}" class="hover:text-gray-400">{{ $current_category->category_name }}</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <a href="{{ route('have_sub_category.index', ['category' => $current_category_id]) }}" class="hover:text-gray-400">{{ $current_sub_category->sub_category_name }}</a>
+    </div>
+    @if(is_null($items->first()))
+      <div class="text-2xl sm:text-3xl text-center py-32 text-gray-600 font-bold">
+        <div class="mb-4">登録されたアイテムはありません</div>
+        <div class="text-base sm:text-lg font-normal">右上の登録ボタンからアイテムを登録しましょう！</div>
+      </div>
+    @endif
     @foreach($items as $item)
-      <div class="flex hover:bg-slate-200 items-center">
+      <div class="flex hover:bg-[#eaeef1] items-center">
         <a href="{{ route('have_item.show', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $item->id]) }}" class="block basis-11/12 px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
           <div class="flex items-center">
             @if($item->photos()->where('item_id', $item->id)->exists())
@@ -38,12 +49,12 @@
                   x-show="isActive"
                   x-on:click.away="isActive = false"
                   x-on:keydown.escape.window="isActive = false">
-                  <a href="{{ route('have_item.edit', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $item->id]) }}" class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                  <a href="{{ route('have_item.edit', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $item->id]) }}" class="block rounded-lg px-4 py-2 text-sm font-semibold text-gray-500 hover:bg-gray-200 hover:text-gray-700">
                     <i class="fa-regular fa-pen-to-square mr-1"></i>
                     編集
                   </a>
                   <div x-data="{ open: false }">
-                    <button class="rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-100" @click="open = true">
+                    <button class="rounded-lg px-4 py-2 text-sm font-semibold text-[#c46759] hover:bg-red-100" @click="open = true">
                       <i class="fa fa-trash mr-2" aria-hidden="true"></i>
                       削除
                     </button>

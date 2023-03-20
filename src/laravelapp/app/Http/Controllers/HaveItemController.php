@@ -25,6 +25,7 @@ class HaveItemController extends Controller
         session(['checkPointURL' => url()->current()]);
 
         return view('item.item_index',[
+            'current_category' => $category,
             'current_category_id' => $category->id,
             'current_sub_category' => $sub_category,
             'current_sub_category_id' => $sub_category->id,

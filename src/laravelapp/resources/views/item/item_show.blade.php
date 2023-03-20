@@ -1,14 +1,14 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm">
+  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm bg-[#fcfcf2]">
     <div class="flex justify-between items-center border-solid border-gray-300 border-b">
       <a href="{{ route('have_item.index' ,['category' => $current_category_id, 'sub_category' => $current_sub_category_id]) }}" class="ml-2 mr-6">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
       </a>
-      <div class="py-3">アイテム詳細</div>
+      <div class="py-3 font-bold">アイテム詳細</div>
       <div class="px-2 sm:px-4">
         <a href="{{ route('have_item.edit', ['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $current_item->id]) }}">
-          <button class="text-right text-xs sm:text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+          <button class="text-right text-xs sm:text-sm bg-[#4185d1] hover:bg-[#6c9cd2] text-white font-bold py-2 px-4 rounded-lg">
             <i class="fa-solid fa-pen-to-square"></i>
             編集
           </button>

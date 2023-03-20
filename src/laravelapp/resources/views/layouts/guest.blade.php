@@ -25,8 +25,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
     </head>
-    <body>
-        <div class="container font-note text-gray-900 antialiased w-full mx-auto max-w-4xl">
+    <body class="bg-[#fffde5]">
+        <div class="container text-gray-800 antialiased w-full mx-auto max-w-4xl bg-[#fcfcf2]">
             {{ $slot }}
         </div>
     </body>

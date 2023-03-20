@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemPhotoController;
 use App\Http\Controllers\HaveSubCategoryController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingController;
 use App\Models\SubCategory;
 use Illuminate\Contracts\Pipeline\Hub;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,11 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::get('/dashboard', function () {
         return view('dashboard');

@@ -1,15 +1,16 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm">
+  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm bg-[#fcfcf2]">
+  <div class="">
     <div class="flex items-center px-2 py-3 border-solid border-gray-300 border-b">
       <a href="{{ route('have_item.edit' ,['category' => $current_category_id, 'sub_category' => $current_sub_category_id, 'item' => $current_item_id]) }}" class="py-3 px-2 mr-6">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
       </a>
-      <div class="py-3">アイテム写真の編集</div>
+      <div class="py-3 font-bold">アイテム写真の編集</div>
     </div>
     <div class="mx-8 my-3">
       <div class="mb-5">
-        <div class="block text-xs sm:text-sm text-gray-900 mb-2">
+        <div class="block text-sm sm:text-base text-gray-900 mb-2">
           アイテム写真
         </div>
         @if($item_photos->isNotEmpty())

@@ -1,16 +1,22 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="bg-white items-center mx-auto">
-    <div class="flex justify-between items-center">
-      <div class="text-xs sm:text-sm p-2 sm:p-4">カテゴリ一覧</div>
+  <div class="bg-[#fcfcf2] items-center mx-auto">
+    <div class="mt-8 flex justify-between items-center bg-[#faf3d4]">
+      <div class="text-sm sm:text-base p-2 sm:p-4 font-bold">カテゴリ一覧</div>
       <div class="p-2 sm:p-4">
-        <a href="{{ route('have_category.create') }}" class="shadow-lg px-2 py-1  bg-yellow-300 text-white text-xs sm:text-sm rounded  hover:bg-yellow-400 hover:shadow-sm hover:translate-y-0.5 transform transition">
+        <a href="{{ route('have_category.create') }}" class="shadow-lg px-2 py-2 font-semibold bg-[#d77f5e] text-[#fcfcf2] text-xs sm:text-sm rounded  hover:bg-[#ff9770] hover:translate-y-0.5 transform transition">
           カテゴリ追加
         </a>
       </div>
     </div>
+    @if(is_null($categories->first()))
+      <div class="text-2xl sm:text-3xl text-center py-32 text-gray-600 font-bold">
+        <div class="mb-4">登録されたカテゴリはありません</div>
+        <div class="text-base sm:text-lg font-normal">右上の登録ボタンからカテゴリを登録しましょう！</div>
+      </div>
+    @endif
     @foreach($categories as $category)
-      <div class="flex hover:bg-slate-200">
+      <div class="flex hover:bg-[#eaeef1]">
         <a href="{{ route('have_sub_category.index', ['category' => $category->id]) }}" class="block basis-11/12 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
           {{ $category->category_name }}
         </a>
@@ -29,12 +35,12 @@
                   x-show="isActive"
                   x-on:click.away="isActive = false"
                   x-on:keydown.escape.window="isActive = false">
-                  <a href="{{ route('have_category.edit', ['category' => $category->id]) }}" class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                  <a href="{{ route('have_category.edit', ['category' => $category->id]) }}" class="block rounded-lg px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:text-gray-900 font-semibold">
                     <i class="fa-regular fa-pen-to-square mr-1"></i>
                     編集する
                   </a>
                   <div x-data="{ open: false }">
-                    <button class="rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-100" @click="open = true">
+                    <button class="rounded-lg px-4 py-2 text-sm font-semibold text-[#c46759] hover:bg-red-100" @click="open = true">
                       <i class="fa fa-trash mr-2" aria-hidden="true"></i>
                       削除する
                     </button>
