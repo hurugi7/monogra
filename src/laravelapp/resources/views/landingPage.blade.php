@@ -1,5 +1,5 @@
 <x-app-layout>
-  <div class="bg-[#fffde5]">
+  <div class="bg-[#fcfcf2]">
     <div class="relative">
       <div class="flex justify-between items-center p-2 sm:p-4 fixed top-0 left-0 right-0 bg-[#eae5e3]">
         <div class="ml-2 sm:ml-8 text-2xl font-bold text-[#d77f5e]">monogra</div>
