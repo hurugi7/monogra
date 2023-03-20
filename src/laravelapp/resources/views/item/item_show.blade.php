@@ -1,6 +1,6 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm bg-[#fcfcf2]">
+  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm bg-white">
     <div class="flex justify-between items-center border-solid border-gray-300 border-b">
       <a href="{{ route('have_item.index' ,['category' => $current_category_id, 'sub_category' => $current_sub_category_id]) }}" class="ml-2 mr-6">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>

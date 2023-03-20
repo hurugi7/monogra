@@ -1,5 +1,5 @@
 <x-app-layout>
-  <section class="bg-[#fffde5]">
+  <section class="bg-white">
     <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
       <section
         class="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6"
@@ -54,7 +54,7 @@
                 type="text"
                 id="name"
                 name="name"
-                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 value="{{ old('name') }}"
               />
             </div>
@@ -68,7 +68,7 @@
                 type="email"
                 id="email"
                 name="email"
-                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 value="{{ old('email') }}"
               />
             </div>
@@ -85,7 +85,7 @@
                 type="password"
                 id="password"
                 name="password"
-                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
             </div>
 
@@ -101,7 +101,7 @@
                 type="password"
                 id="password_confirmation"
                 name="password_confirmation"
-                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm"
+                class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
             </div>
 

@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class="flex h-screen w-full items-center justify-center bg-cover bg-no-repeat" style="background-image:url({{ Storage::disk('s3')->url('images/23462211.jpg') }})">
     <div class="w-full h-screen flex justify-center items-center backdrop-blur-sm my-auto">
-      <div class="rounded-xl bg-[#fffde5] px-16 py-10 shadow-lg max-sm:px-8">
+      <div class="rounded-xl bg-white px-16 py-10 shadow-lg max-sm:px-8">
         <div>
           <div class="mb-8 items-center text-center">
             <h1 class="mb-2 text-3xl font-bold text-[#d77f5e]">monogra</h1>
@@ -15,13 +15,13 @@
               <label for="email" class="block text-sm font-base text-gray-700">
                 メールアドレス
               </label>
-              <input class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm" type="text" name="email" value="{{ old('email') }}"/>
+              <input class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" type="text" name="email" value="{{ old('email') }}"/>
             </div>
             <div class="mb-4 text-lg">
               <label for="password" class="block text-sm font-base text-gray-700">
                 パスワード
               </label>
-              <input class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-[#fcfcf2] text-sm text-gray-700 shadow-sm" type="Password" name="password"/>
+              <input class="focus:border-[#6c9cd2] mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" type="Password" name="password"/>
             </div>
             <div class="mt-8 flex flex-col justify-center items-center text-lg text-black">
               <div class="flex">

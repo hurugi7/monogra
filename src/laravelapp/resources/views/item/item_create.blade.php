@@ -1,6 +1,6 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm bg-[#fcfcf2]">
+  <div class="my-2 sm:my-5 mx-2 border-solid border-gray-300 rounded-lg border shadow-sm bg-white">
     <div class="flex items-center border-solid border-gray-300 border-b">
       <a href="{{ route('have_item.index' ,['category' => $current_category_id, 'sub_category' => $current_sub_category_id]) }}" class="ml-2 mr-6">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -22,7 +22,7 @@
         <label for="item_name" class="block text-sm sm:text-base font-bold text-gray-900 mb-1">
           アイテム名
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="item_name" id="item_name" value="{{ old('item_name') }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="item_name" id="item_name" value="{{ old('item_name') }}">
       </div>
       <div class="mb-5">
         <label for="image_path" class="block text-sm sm:text-base font-bold text-gray-900 mb-4">
@@ -40,31 +40,31 @@
         <label for="price" class="block text-sm sm:text-base font-bold text-gray-900 mb-1">
           値段
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="price" id="price" value="{{ old('price') }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="price" id="price" value="{{ old('price') }}">
       </div>
       <div>
         <label for="item_num" class="block text-sm sm:text-base font-bold text-gray-900 mb-1">
           個数
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="item_num" id="item_num" value="{{ old('item_num') }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="item_num" id="item_num" value="{{ old('item_num') }}">
       </div>
       <div>
         <label for="purchased_at" class="block text-sm sm:text-base font-bold text-gray-900 mb-1">
           購入日
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="purchased_at" id="purchased_at" value="{{ old('purchased_at') }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="purchased_at" id="purchased_at" value="{{ old('purchased_at') }}">
       </div>
       <div>
         <label for="purchased_in" class="block text-sm sm:text-base font-bold text-gray-900 mb-1">
           購入場所
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="purchased_in" id="purchased_in" value="{{ old('purchased_in') }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="purchased_in" id="purchased_in" value="{{ old('purchased_in') }}">
       </div>
       <div>
         <label for="note" class="block text-sm sm:text-base font-bold text-gray-900 mb-1">
           ノート
         </label>
-        <textarea class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="note" id="note">
+        <textarea class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="note" id="note">
           {{ old('note') }}
         </textarea>
       </div>

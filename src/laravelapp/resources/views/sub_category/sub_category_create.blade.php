@@ -1,6 +1,6 @@
 <x-guest-layout>
   <x-header :user="$user"/>
-  <div class="mx-4 mt-4 border-solid border-gray-300 rounded-lg border shadow-sm bg-[#fcfcf2]">
+  <div class="mx-4 mt-4 border-solid border-gray-300 rounded-lg border shadow-sm bg-white">
     <div class="flex px-2 py-3 border-solid border-gray-300 border-b">
       <a href="{{ route('have_sub_category.index' ,['category' => $current_category_id]) }}" class="ml-2 mr-6">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -22,7 +22,7 @@
         <label for="sub_category_name" class="block font-bold text-gray-900 mb-2">
           サブカテゴリ名
         </label>
-        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="sub_category_name" id="sub_category_name" value="{{ old('sub_category_name') }}">
+        <input type="text" class="block w-full p-4 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-[#6c9cd2] focus:border-[#6c9cd2]" name="sub_category_name" id="sub_category_name" value="{{ old('sub_category_name') }}">
       </div>
       <div class="text-right">
         <a href="{{ route('have_sub_category.store' ,['category' => $current_category_id]) }}">

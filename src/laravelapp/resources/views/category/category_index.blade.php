@@ -2,7 +2,7 @@
   <x-header :user="$user"/>
   <div class="bg-[#fcfcf2] items-center mx-auto">
     <div class="mt-8 flex justify-between items-center bg-[#faf3d4]">
-      <div class="text-sm sm:text-base p-2 sm:p-4 font-bold">カテゴリ一覧</div>
+      <div class="text-sm sm:text-base p-4 font-bold">カテゴリ一覧</div>
       <div class="p-2 sm:p-4">
         <a href="{{ route('have_category.create') }}" class="shadow-lg px-2 py-2 font-semibold bg-[#d77f5e] text-[#fcfcf2] text-xs sm:text-sm rounded  hover:bg-[#ff9770] hover:translate-y-0.5 transform transition">
           カテゴリ追加

@@ -23,7 +23,7 @@
     </div>
   @endif
 
-  <div class="mx-4">
+  <div class="mx-4 bg-white">
     <form method="post" action="{{ route('user.update') }}" enctype="multipart/form-data">
       @csrf
       @method('put')
@@ -59,13 +59,13 @@
           <div id="preview-item1" class="flex w-24 h-24"></div>
         </div>
       </div>
-      <div class="mt-2 border-t-2">
+      <div class="mt-2 border-t-2 lg:ml-2">
         <label for="name" class="block pt-4 pb-2 text-sm font-bold text-gray-900">ユーザー名</label>
         <div>
           @if(Auth::id() !== 2)
-            <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-blue-500 focus:border-blue-500">
+            <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500">
           @else
-            <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-[#fcfcf2] sm:text-md focus:ring-blue-500 focus:border-blue-500" readonly>
+            <input type="text" name="name" value="{{ $user->name }}" class="block w-7/12 sm:w-5/12 p-3 mb-5 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500" readonly>
           @endif
         </div>
       </div>
