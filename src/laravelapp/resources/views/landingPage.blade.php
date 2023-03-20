@@ -15,9 +15,9 @@
             </button>
           </a>
         </div>
-        <div x-data="{ open: false }" class="relative sm:hidden">
+        <div x-data="{ open: false }" class="relative sm:hidden mt-2">
           <!-- ハンバーガーメニューボタン -->
-          <button @click="open = !open" class="focus:outline-none z-20">
+          <button @click="open = !open" class="focus:outline-none">
               <svg x-show="!open" class="w-6 h-6 text-gray-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
@@ -26,18 +26,18 @@
               </svg>
           </button>
           <!-- メニューアイテム -->
-          <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-1" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-1" class="fixed top-20 left-0 right-0 bottom-0 bg-white">
+          <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-1" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-1" class="fixed top-12 left-0 right-0 py-8 mt-1 bg-[#fcfcf2]">
               <ul class="h-full flex flex-col justify-center items-center space-y-4">
                   <li>
                       <a href="{{ route('login') }}">
-                        <button class="inline-block rounded-md border border-[#6c9cd2] bg-[#6c9cd2] py-3 px-24 font-medium text-lg text-white transition hover:bg-transparent hover:text-[#6c9cd2] focus:outline-none focus:ring active:text-[#6c9cd2]">
+                        <button class="inline-block rounded-md border border-[#6c9cd2] bg-[#6c9cd2] py-1 px-4 font-medium text-lg text-white transition hover:bg-transparent hover:text-[#6c9cd2] focus:outline-none focus:ring active:text-[#6c9cd2] drop-shadow-md">
                           ログイン
                         </button>
                       </a>
                   </li>
                   <li>
                       <a href="{{ route('register') }}">
-                        <button class="inline-block rounded-md border border-[#61c1be] bg-[#61c1be] py-3 px-20 text-lg font-medium text-white transition hover:bg-transparent hover:text-[#61c1be] focus:outline-none focus:ring active:text-[#61c1be]">
+                        <button class="inline-block rounded-md border border-[#61c1be] bg-[#61c1be] py-1 px-3 text-lg font-medium text-white transition hover:bg-transparent hover:text-[#61c1be] focus:outline-none focus:ring active:text-[#61c1be] drop-shadow-md">
                           会員登録
                         </button>
                       </a>
