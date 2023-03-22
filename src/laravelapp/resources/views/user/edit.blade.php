@@ -28,22 +28,22 @@
       @csrf
       @method('put')
       <div class="profile flex items-center justify-between">
-        <div class="profile-img sm:flex sm:items-center">
+        <div class="profile-img sm:flex items-center">
           <div class="flex items-center">
             <div class="mt-2 sm:mt-0">
               @if(!is_null($user->profile_img_path))
-                <img src="{{ $user->profile_img_path }}" alt="profile_img" class="w-24 h-24 object-cover rounded-full border-2">
+                <img src="{{ $user->profile_img_path }}" alt="profile_img" class="w-16 h-16 sm:w-24 sm:h-24 object-cover rounded-full border-2">
               @else
                 <img src="{{ Storage::disk('s3')->url('images/icon-of-a-person-7.jpg') }}" alt="profile_img" class="w-24 h-24 object-cover rounded-full border-2">
               @endif
             </div>
             <div class="ml-2">
-              <div class="text-2xl font-semibold">{{ $user->name }}</div>
-              <div>{{ $user->email }}</div>
+              <div class="text-xl sm:text-2xl font-semibold">{{ $user->name }}</div>
+              <div class="text-sm sm:text-base">{{ $user->email }}</div>
             </div>
           </div>
           @if(Auth::id() !== 2)
-            <div class="sm:ml-8 w-28">
+            <div class="mt-8 sm:mt-0 sm:ml-8 w-28">
               <label class="block text-center py-2 rounded bg-[#61c1be] hover:bg-[#74e3df] text-white text-sm cursor-pointer mt-2 sm:mt-0">
                 <i class="fa-solid fa-plus"></i>
                 画像を選択
