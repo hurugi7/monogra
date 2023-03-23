@@ -190,6 +190,6 @@ item_photosテーブルを別に作り、itemsテーブルと関連付けるこ�
 * メールサーバーにSESを利用し、パスワード再設定メールの送信をしています。
 
 
-![demo](https://raw.github.com/wiki/hurugi7/monogra/images/infra_aws_monogra.drawio)
+![demo](https://github.com/hurugi7/monogra/blob/master/infra_aws_monogra.drawio.png)
 
 
