@@ -48,7 +48,7 @@
           </div>
         @else
           <div class="w-6/12 h-6/12 mx-auto">
-            <img src="{{ asset('storage/20200505_noimage.png') }}" alt="" class="w-full h-full object-cover">
+            <img src="{{ Storage::disk('s3')->url('images/20200505_noimage.png') }}" alt="" class="w-full h-full object-cover">
           </div>
         @endif
       </div>
