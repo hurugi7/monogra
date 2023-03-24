@@ -1,7 +1,9 @@
 <nav class="p-3 flex flex-wrap items-center bg-[#eae5e3] justify-between w-full z-10" x-data="{ isOpen: false }" @keydown.escape="isOpen = false" :class="{ 'shadow-lg bg-[#eae5e3]' : isOpen , 'bg-[#eae5e3]' : !isOpen}">
   <!-- タイトル -->
   <div class="items-center shrink-0 text-black">
-    <span class="font-semibold text-lg text-[#d77f5e]">monogra</span>
+    <a href="{{ route('have_category.index') }}">
+      <span class="font-semibold text-lg text-[#d77f5e]">monogra</span>
+    </a>
   </div>
   <!-- 検索バー -->
   <form action="{{ route('search') }}" method="get" class="hidden sm:flex">
