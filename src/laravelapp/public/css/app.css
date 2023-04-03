@@ -10064,13 +10064,11 @@ select {
     margin-bottom: 2rem;
   }
 
-  .lg\:ml-1 {
-    margin-left: 0.25rem;
-  }
 
   .lg\:ml-2 {
     margin-left: 0.5rem;
   }
+
 
   .lg\:block {
     display: block;
